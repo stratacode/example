@@ -1,0 +1,2 @@
+interface UCComboBoxStyle extends UCComponentStyle {
+}

@@ -1,0 +1,10 @@
+<!-- A simple HTML page template which binds the input tag to the message property and displays 
+     the reply property as the body of a div tag. -->
+<html>
+<body>
+   <form onSubmit="return false;">
+      <input type="text" value=":=: message" size="45">
+      <div><%= reply %></div>
+   </form>
+</body>
+</html>

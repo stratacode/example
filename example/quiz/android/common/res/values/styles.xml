@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Styles common to all quiz applications -->
+<resources>
+    <style name="TextAppearance">
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="TextAppearance.Medium">
+        <item name="android:textSize">15sp</item>
+    </style>
+</resources>

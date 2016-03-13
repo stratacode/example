@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Make Quiz</string>
+    <string name="menu_insert_quiz">Add quiz</string>
+    <string name="menu_edit_quiz">Edit quiz</string>
+    <string name="menu_delete_quiz">Delete quiz</string>
+    <string name="menu_insert_question">Add question</string>
+    <string name="menu_edit_question">Edit question</string>
+    <string name="menu_delete_question">Delete question</string>
+    <string name="no_quizes">There are no quizes to display.  To create a new quiz, press <b>Menu</b> and touch <b>Add quiz</b>.</string>
+    <string name="no_questions">There are no questions in this quiz.  To create a new question, press <b>Menu</b> and touch <b>Add question</b>.</string>
+</resources>

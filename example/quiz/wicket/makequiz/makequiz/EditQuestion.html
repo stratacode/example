@@ -1,0 +1,45 @@
+<html xmlns:wicket="http://wicket.apache.org/">
+<head>
+  <title wicket:id="pageTitle">Sesame Street: Question 1</title>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+<table class="navigation">
+  <tr>
+    <td>
+      <a wicket:id="quizListLink" href="#">All Quizes</a> &nbsp;&gt;&nbsp;
+      <a wicket:id="questionListLink" href="#">
+	<span wicket:id="quizNameLabel">Sesame Street</span></a> &nbsp;&gt;&nbsp;
+      <span wicket:id="questionLabel">Question 1</span>
+    </td>
+  </tr>
+</table>
+<p>
+<form wicket:id="editQuestionForm">
+  <textarea wicket:id="questionText" rows="4" cols="45"></textarea>
+  <p>
+  Answer choices (select the correct answer):
+  <p>
+  <span wicket:id="answerChoiceButtons">
+    <span wicket:id="answerChoices">
+      <input type="radio" wicket:id="answerChoiceRadio"/>
+      <input type="text" wicket:id="answerChoiceText" size="44"/>
+      <br>
+    </span>
+    <wicket:remove>
+      <input type="radio"/><input type="text" size="44"/><br>
+      <input type="radio"/><input type="text" size="44"/><br>
+      <input type="radio"/><input type="text" size="44"/><br>
+    </wicket:remove>
+  </span>
+  <p>
+  Explain why your answer is correct:
+  <p>
+  <textarea wicket:id="answerDetailText" rows="4" cols="45"></textarea>
+  <p>
+  <input type="submit" wicket:id="saveQuestionButton" value="Save Question"/>
+  <input type="submit" wicket:id="discardChangesButton" value="Discard Changes"/> 
+</form>
+<div wicket:id="feedback">[Error Panel]</div>
+</body>
+</html>

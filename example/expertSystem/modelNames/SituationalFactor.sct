@@ -1,0 +1,62 @@
+<%! SituationalFactor { 
+   DECISION_SIGNIFICANCE {
+      displayName = "Decision Significance";
+      shortDescription = "The significance of the decision to the success of the project or organization";
+      longDescription = %>This situational factor is similar to what Professor Norman Maier referred to as the quality requirement of the decision. In thinking about your answer, you should focus on the magnitude of the external consequences of the decision rather than its impact on the group that you have identified as a potential participant. In other words, assume their support and enthusiastic cooperation then ask how much difference the chosen course of action is likely to make to the organization.  Highly significant decisions frequently have technical aspects. There may be a right answer or at least a set of answers that vary markedly in their consequences. You may not know the right course of action, but it is clear that the path chosen is likely to make a  big difference. It is important to not make a mistake since doing so would lose money, alienate customers, and/or jeopardize the success of the project or organization. <%;
+   }
+
+   IMPORTANCE_OF_COMMITMENT {
+      displayName = "Importance of Commitment";
+      shortDescription = "The importance of group members` commitment  to the decision";
+      longDescription = %>The situational factor Decision Significance pertained to the external consequences of the decision. Importance of Commitment refers to the importance of its internal consequences (i.e., its impact on the group in question). It is similar to what Professor Maier has referred to as the acceptance requirement of the decision.  The underlying notion is that having the "right answer" or a technically sound, well-reasoned decision may not be enough to produce a successful or effective decision. Many high-quality decisions have failed because they lack the commitment and support within the organization to be implemented effectively.  If the nature of the decision is such that substantial support and cooperation is required by the group to implement it effectively, select Critical or High Importance.<%;
+   }
+      
+   LEADER_EXPERTISE {
+      displayName = "Leader Expertise";
+      shortDescription = "Your knowledge or expertise in relation to this problem";
+      longDescription = %>If a decision is significant or important (i.e., has consequences for customers or stakeholders other than the group whose involvement is under consideration), it is necessary for the decision process to incorporate the information or knowledge needed to anticipate these consequences. This situational factor pertains to whether you, as a leader, possess the knowledge and expertise necessary to process it. Note that your expertise should be judged in relation to this specific problem, not generally for all of the problems that you might encounter. For example, even though you are highly experienced in your job, you may encounter a decision problem which you do not understand and for which you do not have the relevant expertise.<%;
+   }
+      
+   LIKELIHOOD_OF_COMMITMENT {
+      displayName = "Likelihood of Commitment";
+      shortDescription = "The likelihood that the group would commit themselves to a decision that you might make on your own";
+      longDescription = %>Enabling group members to participate in decision making is one way of obtaining their commitment or \"buy in.\" But one cannot overlook the fact that there exist situations in which the group would be perfectly willing for you, as leader, to make the decision. This situational factor concerns the degree to which the group is likely to effectively support your solution to the problem. Note that we are not asking about begrudging compliance but about genuine acceptance or \"buy in.\" Your judgment on this factor should be informed by your personal relationship with group members. Do they view you as the expert? Do you have their trust, confidence, and respect?  You should also consider your own persuasive skills in communicating the role that you would like the group to play in carrying out the decision and in obtaining their commitment to that role. <%;
+   }
+
+   GOAL_ALIGNMENT {
+      displayName = "Goal Alignment";
+      shortDescription = "The degree to which the goals of group members correspond to the organizational objectives at " + 
+       "stake in this problem";
+      longDescription = "All decision problems have three major components: A present state (i.e., where we are now), a " + 
+       "desired state (i.e., where we want to go), and a set of processes (sometimes known, sometimes " + 
+       "unknown) by which one can move from the first to the second. It is the desired state, i.e., the " + 
+       "goals to be attained in the problem, that is the subject of this situational factor. The " + 
+       "judgment required concerns the degree to which the goals of group or team members correspond with " + 
+       "the objectives at stake in this problem.";
+   }
+
+   GROUP_EXPERTISE {
+      displayName ="Group Expertise";
+      shortDescription = "The group members knowledge or expertise in relation to this problem";
+      longDescription = "This situational factor, like Leader Expertise, deals with the knowledge necessary to analyze " + 
+       "the problem and to devise a plan which would be effective in solving it. However, here we " + 
+       "address the knowledge and expertise which exists within the group. You should consider group " + 
+       "members collectively, addressing the sum of the talents possessed by the members of the group. In " + 
+       "making this judgment, you should consider the abilities of group members and not their motivation " + 
+       "to use these abilities to find the solution of most value to the organization.";
+   }
+
+   TEAM_COMPETENCE {
+      displayName ="Team Competence";
+      shortDescription = "The ability of group members to work together as a team in solving problems";
+      longDescription = "This situational factor relates to the distinction that is frequently made between groups and " + 
+       "teams. Teams are groups that have a history of effective collaboration and that repeatedly put " + 
+       "the team's success ahead of individual accomplishment. One of the indicators of team competence " + 
+       "may be found in the history of the team's functioning. However, there are occasions in which the " + 
+       "group has never worked together before (and therefore has no such history), but its component " + 
+       "members have demonstrated collaborative abilities in other situations. As a consequence, you " + 
+       "could be optimistic about the prospects that they would function as an effective team in the " + 
+       "absence of demonstrated history.";
+   }
+}
+%>

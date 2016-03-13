@@ -1,0 +1,75 @@
+cmd.pauseTime = 100;
+cmd.sleep(1000); // Wait until main creates its instance to avoid a race condition
+UnitConverterInst {
+   converters {
+      temperature {
+         value1 = 1;
+         value1 = 2;
+         value1 = 3;
+         value1 = 4;
+         value1 = 5;
+
+         value2 = 1;
+         value2 = 2;
+         value2 = 3;
+         value2 = 4;
+         value2 = 5;
+      }
+   }
+   converterChoice {
+      selectedIndex = 1;
+   }
+   converters {
+      distance {
+         value1 = 1;
+         value1 = 2;
+         value1 = 3;
+         value1 = 4;
+         value1 = 5;
+
+         value2 = 1;
+         value2 = 2;
+         value2 = 3;
+         value2 = 4;
+         value2 = 5;
+      }
+   } 
+   converterChoice {
+      selectedIndex = 2;
+   }
+   converters {
+      speed {
+         value1 = 1;
+         value1 = 2;
+         value1 = 3;
+         value1 = 4;
+         value1 = 5;
+
+         value2 = 1;
+         value2 = 2;
+         value2 = 3;
+         value2 = 4;
+         value2 = 5;
+      }
+   }
+   converterChoice {
+      selectedIndex = 3;
+   }
+   converters {
+      volume {
+         value1 = 1;
+         value1 = 2;
+         value1 = 3;
+         value1 = 4;
+         value1 = 5;
+
+         value2 = 1;
+         value2 = 2;
+         value2 = 3;
+         value2 = 4;
+         value2 = 5;
+      }
+   }
+}
+cmd.sleep(2000);
+cmd.quit();

@@ -1,0 +1,33 @@
+<!-- TodoList.schtml (by default) modifies the TodoList class in the previous model layer.
+     It sets needsRefresh so we refresh the bindings on this page for updating the getRemaining
+     method. -->
+<html needsRefresh="true">
+  <head>
+      <link rel="stylesheet" type="text/css" href="todoStyle.css" />
+  </head>
+  <body>
+    <div class="appFrame">
+       <h2>Todo List</h2>
+       <div id="todoControl">
+         <!-- Not just a script!  These values are updated automatically -->
+         <span><%= getRemaining(todos) %> of <%= getSize(todos) %> to do</span>
+         <!-- clickEvent changes when there's a click.  When that happens the binding calls: 'removeComplete()' -->
+         [ <a href="#" clickEvent="=: removeComplete()">remove completed</a> ]
+         <ul>
+           <!-- Repeat the li tag once for each element in the todos list.  
+                As the list changes, tags are added/removed as needed -->
+           <li repeat=":= todos" repeatVarName="todo">
+             <!-- Set checked to the value of todo.complete and vice-versa -->
+             <input type="checkbox" checked=":=: todo.complete">
+             <!-- Add a class to this span tag when it is done -->
+             <span class='<%= "complete-" + todo.complete %>'><%= todo.text%></span>
+           </li>
+         </ul>
+         <form submitEvent="=: addTodoEntry()">
+           <input type="text" value=":=: todoText" size="45" placeholder="enter todo entry here">
+           <input type="submit" value="Add" disabled=':= TextUtil.length(todoText) == 0'>
+         </form>
+       </div>
+     </div>
+  </body>
+</html>

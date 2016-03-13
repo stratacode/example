@@ -1,0 +1,17 @@
+<html xmlns:wicket="http://wicket.apache.org/">
+<head>
+  <title>Pick a Quiz</title>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+<form wicket:id="pickQuizForm">
+  Pick a quiz:
+  <select wicket:id="quizChoice">
+    <option>Sesame Street</option>
+  </select>
+  <p>
+  <input type="submit" value="Take Quiz"/>
+</form>
+<div wicket:id="feedback">[Error Panel]</div>
+</body>
+</html>

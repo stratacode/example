@@ -1,0 +1,31 @@
+<html xmlns:wicket="http://wicket.apache.org/">
+<head>
+  <title>Quiz List</title>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+<table class="navigation">
+  <tr>
+    <td>All Quizes</td>
+    <td align="right">
+      <a wicket:id="addQuizLink" href="#">Add Quiz</a>&nbsp;
+    </td>
+  </tr>
+</table>
+<p>
+<table>
+  <span wicket:id="quizNames">
+    <tr>
+      <td>
+	<a wicket:id="editQuizLink" href="#">
+          <span wicket:id="quizNameLabel"></span>
+        </a>
+      </td>
+      <td>
+	<input type="button" wicket:id ="deleteQuizLink" value="Delete"/>
+      </td>
+    </tr>
+  </span>
+</table>
+</body>
+</html>

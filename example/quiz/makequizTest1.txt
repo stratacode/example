@@ -1,0 +1,26 @@
+cmd.path="makequiz";
+cmd.sleep(5000);
+
+MakeQuizInit {
+   outerSplitPane {
+      innerSplitPane {
+         quizListPanel {
+            quizListPane {
+               quizNameList {
+                  state.quizName = ((listItems == null) || (listItems.size() == 0)) ? null : (String) listItems.get(0);
+               }
+            }
+         }
+         cmd.sleep(1000);
+         questionListPanel {
+            questionListPane {
+               questionTextList {
+                  state.questionIndex = ((listItems == null) || (listItems.size() == 0)) ? -1 : 0;
+               }
+            }
+         }
+         cmd.sleep(5000);
+      }
+   }
+}
+

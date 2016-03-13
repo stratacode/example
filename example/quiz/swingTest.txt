@@ -1,0 +1,27 @@
+cmd.pauseTime=100;
+cmd.path="takequiz";
+// Need to press ok before the 5 secs goes by
+cmd.waitForUI(5000);
+TakeQuizMain {
+   takeQuiz {
+      answerChoiceButtons {
+         selectedIndex = 3;
+      }
+      answerChoiceButtons {
+      }
+      answerButton {
+         clickCount++;
+      }
+      nextButton.clickCount++;
+      answerChoiceButtons.selectedIndex = 2;
+      nextButton.clickCount++;
+      answerChoiceButtons.selectedIndex = 1;
+      answerButton.clickCount++;
+      nextButton.clickCount++;
+      answerChoiceButtons.selectedIndex = 1;
+      answerButton.clickCount++;
+      nextButton.clickCount++;
+      answerChoiceButtons.selectedIndex = 0;
+      answerButton.clickCount++;
+      doneButton.clickCount++;
+

@@ -1,0 +1,12 @@
+<html>
+   <body>
+      <div propA=":= propB + 3">
+         <%! 
+            // Two simple properties and this comment
+            int propA;
+            int propB = 5;
+         %>
+         <%=propA%> - 3 = <%=propB%>
+      </div>
+   </body>
+</html>

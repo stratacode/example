@@ -1,0 +1,19 @@
+.enabled {
+    color:black;
+}
+
+.disabled {
+    color:grey;
+}
+
+.correct {
+    color:blue;
+}
+
+.incorrect {
+    color:red;
+}
+
+
+
+

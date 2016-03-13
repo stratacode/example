@@ -1,0 +1,22 @@
+
+#unitConverterForm {
+
+}
+
+#converterChoice, .unitLabel, .unitField {
+   width: 110px;
+}
+
+#converterChoice {
+   margin-left: 69px;
+   margin-bottom: 5px;
+}
+
+.unitLabel {
+  text-align: right;
+  display: inline-block;
+}
+
+.unitField {
+  margin-left: 3px;
+}

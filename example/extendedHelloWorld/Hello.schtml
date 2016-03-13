@@ -1,0 +1,4 @@
+<%! Hello { 
+  message = "Hello StrataCode";
+} %>
+<%= super.output() %>

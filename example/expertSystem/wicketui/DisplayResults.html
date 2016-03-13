@@ -1,0 +1,21 @@
+<html xmlns:wicket="http://wicket.apache.org/">
+<head>
+  <title>Expert System Trial</title>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+<form wicket:id="displayResultsForm">
+  <u>Time Driven Model:</u> 
+  <span wicket:id="timeDrivenDisplayNameLabel">Decide</span>
+  <p>
+  <span wicket:id="timeDrivenDescriptionLabel">Description of this decision</span>
+  <p>
+  <u>Development Driven Model:</u>
+  <span wicket:id="developmentDrivenDisplayNameLabel">Decide</span>
+  <p>
+  <span wicket:id="developmentDrivenDescriptionLabel">Description of this decision</span>
+  <p>
+  <input type="submit" wicket:id="doneButton" value="Analyze Another Situation"/> 
+</form>
+</body>
+</html>

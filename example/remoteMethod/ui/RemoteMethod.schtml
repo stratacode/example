@@ -1,0 +1,58 @@
+<html>
+   <body><div class="appFrame">
+      Simple call to the server, result is ignored:
+      <input type="button" value="Echo hello on server" clickEvent="=: echoHello()"/>
+      <p>
+      Call to server when button is pressed.  
+      <form submitEvent="=: remoteResult = sayHello(nameField.value)">
+         <%! String remoteResult; %>
+         <input id="nameField" type="text"/>
+         <input type="submit" value="Say hello"/><br/>
+         Result: <%= remoteResult %>
+      </form>
+      <p/>
+      Call to server when key is pressed.  Result:
+      <!--
+        Should we fix this?   #1 restore focus after refresh #2 investigate why body is being split... is it the sub-tags?
+      <input type="text" id="immediateName"><br>
+      Result: <%= sayHello(immediateName.value) %>
+      <p>
+      Like above but with results in a tag object to limit updates:
+      -->
+      <input type="text" id="childName"/><br/>
+      <div id="immediate">
+         Result: <%= sayHello(childName.value) %>
+      </div>
+      <p/>
+      <%! object cvt extends NumberConverter { } %>
+      <input type="text" id="a"/> + <input type="text" id="b"/> = <span id="result"><%= addNumbers(cvt.stringToNumber(a.value),cvt.stringToNumber(b.value)) %></span>
+      <div visible=":= TextUtil.length(cvt.error) > 0" style="color: #c00"><%= cvt.error %></div>
+      <p/>
+
+      <div id="list">
+         <%!  
+              ArrayList<Number> row1 = {1.0, 2.0, 3.0};
+              ArrayList<Number> row2 = {3.0, 5.0, 8.0};
+              ArrayList<Number> resultRow := addListOfNumbers(row1, row2);
+         %>
+
+         <span id="row1Cell" repeat=":= row1" repeatVarName="row">
+            <input type="text" value=':=: cvt.numberToString(row1.getNoError(row1Cell.this.repeatIndex))'>
+         </span> + <br>
+         <span id="row2Cell" repeat=":= row2" repeatVarName="row">
+            <input type="text" value=':=: cvt.numberToString(row2.getNoError(row2Cell.this.repeatIndex))'>
+         </span> = <br>
+         <span repeat=":= resultRow" repeatVarName="row">
+            <input type="text" disabled="true" value=":= cvt.numberToString(row)">
+         </span><br>
+      </div>
+
+      <div id="displayMotd">Message of the day: <%= motd.getMessage() %></div>
+
+      <div id="condDisplayMotd">
+         <%! boolean showMOTD = false; %>
+         <input type="checkbox" checked=":=: showMOTD"/>Show message?
+         <%= showMOTD ? motd.getMessage() : "message not shown" %>
+      </div>
+   </div></body>
+</html>

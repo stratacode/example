@@ -1,0 +1,45 @@
+// Need to let the main create the unit converter so we don't get two of them since getX is
+// not synchronized yet
+cmd.sleep(5000);
+
+// Run sc unitConverter/adjust -i, then feed these commands to the interpreter
+
+// Sets the package/directory
+
+// Modify the Main component
+UnitConverterInst {
+    background = Color.BLUE;
+    foreground = Color.WHITE;
+    unit1Label { 
+       foreground := UnitConverterInst.this.foreground;
+    }
+    unit2Label { 
+       foreground := UnitConverterInst.this.foreground;
+    }
+    errorLabel {
+       foreground := Color.RED;
+    }
+
+    // Error expected here - infinite loop
+    row1y := (int) (unit2Field.location.y + unit2Field.size.height + ypad);
+    row2y := (int) (converterChoice.location.y + converterChoice.size.height + ypad);
+    row1y := (int) (unit2Field.location.y + unit2Field.size.height + ypad);
+ 
+    errorLabel {
+       location := SwingUtil.point(xpad, unit1Field.location.y + unit1Field.size.height + ypad + baseline);
+ 
+       cmd.print();
+ 
+       foreground = new Color(250, 70, 70);
+    }
+         
+    background = new Color(20,30, 128);
+ 
+    cmd.print();
+ 
+    colorChooser {
+      color :=: colorChoice.selected ? AdjustableAppFrame.this.background : AdjustableAppFrame.this.foreground;
+    }
+}
+
+cmd.sleep(2000);

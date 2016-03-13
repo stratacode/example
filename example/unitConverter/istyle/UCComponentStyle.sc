@@ -1,0 +1,2 @@
+interface UCComponentStyle extends ComponentStyle {
+}

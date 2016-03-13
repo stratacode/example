@@ -1,0 +1,3 @@
+class BaseType {
+  int id;
+}

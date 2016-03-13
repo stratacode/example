@@ -1,0 +1,56 @@
+cmd.sleep(5000);
+cmd.path="makequiz";
+cmd.sleep(5000);
+
+MakeQuizInit {
+   outerSplitPane {
+      innerSplitPane {
+         quizListPanel {
+            state.quizName = "myquiz";
+            cmd.sleep(500);
+            { if (state.quizName != null) gotoDeleteQuiz(); }
+            gotoAddQuiz();
+            cmd.sleep(500);
+         }
+         questionListPanel {
+            //state.quizName = "myquiz";
+            cmd.sleep(500);
+            gotoAddQuestion();
+            cmd.sleep(500);
+         }
+      }
+      editQuestionPanel {
+         questionPane {
+            questionText {
+               text = "My question text";
+            }
+         }
+         answerChoice0Text {
+            text = "my choice 0";
+         }
+         answerChoice1Text {
+            text = "my choice 1";
+         }
+         answerChoice2Text {
+            text = "my choice 2";
+         }
+         answerChoice3Text {
+            text = "my choice 3";
+         }
+         answerChoiceButtons {
+            selectedIndex = 1;
+         }
+         answerDetailPane {
+            answerDetailText {
+               text = "Details details...";
+            }
+         }
+         saveQuestionButton.clickCount++;
+      }
+      innerSplitPane {
+         questionListPanel {
+            state.questionIndex = 0;
+         }
+   }
+   cmd.sleep(5000);
+}  

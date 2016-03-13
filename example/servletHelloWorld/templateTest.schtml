@@ -1,0 +1,7 @@
+<%! public StringBuilder foobar() { %>
+   where does this content end up going
+<% } %>
+
+<% String myStr = %>Now in this template<%;%>
+<%= myStr %>
+

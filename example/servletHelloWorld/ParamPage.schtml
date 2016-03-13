@@ -1,0 +1,5 @@
+<%! 
+   int prop1 = 333;
+   String prop2 = "foobar";
+%>
+Should <%= prop1 %>=333 and foobar=<%=prop2%>

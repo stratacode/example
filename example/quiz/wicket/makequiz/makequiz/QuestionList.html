@@ -1,0 +1,37 @@
+<html xmlns:wicket="http://wicket.apache.org/">
+<head>
+  <title wicket:id="pageTitle">Make a Quiz: Sesame Street</title>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+<table class="navigation">
+  <tr>
+    <td>
+      <a wicket:id="quizListLink" href="#">All Quizes</a> &nbsp;&gt;&nbsp;
+      <span wicket:id="quizNameLabel">Sesame Street</span>
+    </td>
+    <td align="right">
+      <a wicket:id="addQuestionLink" href="#">Add Question</a>&nbsp;
+    </td>
+  </tr>
+</table>
+<p>
+<table>
+  <span wicket:id="questions">
+    <tr>
+      <td>
+	<a wicket:id="editQuestionLink" href="#">
+          <span wicket:id="questionLabel">
+	    Which Sesame Street character is the most grouchy?
+          </span>
+        </a>
+      </td>
+      <td>
+	<input type="button" wicket:id ="deleteQuestionLink" value="Delete"/>
+      </td>
+    </tr>
+  </span>
+</table>
+<div wicket:id="feedback">[Error Panel]</div>
+</body>
+</html>
