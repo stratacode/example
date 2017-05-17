@@ -1,5 +1,5 @@
-<%! public StringBuilder foobar() { %>
-   where does this content end up going
+<%! public void foobar(StringBuilder out) { %>
+   this turns into return out.append('... method body...');
 <% } %>
 
 <% String myStr = %>Now in this template<%;%>
