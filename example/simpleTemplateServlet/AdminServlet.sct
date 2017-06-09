@@ -1,0 +1,58 @@
+<%@
+import javax.servlet.Filter;
+import javax.servlet.FilterConfig;
+import javax.servlet.FilterChain;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+import sc.sync.SyncManager;
+%><%!
+
+@PathServlet(path="/simpleTemplateServlet")
+class AdminServlet extends HttpServlet {
+
+   public void service(javax.servlet.http.HttpServletRequest request, 
+                                javax.servlet.http.HttpServletResponse response) 
+                           throws IOException, ServletException {
+
+
+      Context ctx = null;
+      try {
+         ctx = Context.initContext(request, response);
+
+         // Output the document start
+         ctx.write(%>
+<html>
+   <body>
+        <h2>StrataCode Server Administration</h2>
+
+         <%);
+
+         // Handle the commands sent in via parameters
+         String reset = request.getParameter("reset");
+         HttpSession session = request.getSession(false);
+         if (session != null && reset != null) {
+            if (SyncManager.trace)
+               System.out.println("Sync resetting session: " + session.getId());
+
+            ctx.write(%><p>Your session: <%= session.getId() %> has been reset.</p><%); 
+
+            session.invalidate();
+         }
+
+         ctx.write(%>
+      <a href="/admin?reset=true">Reset session</a><br>
+   </body>
+</html>
+         <%);
+
+      }
+      finally {
+         if (ctx != null) {
+            ctx.execLaterJobs();
+            Context.clearContext();
+         }
+      }
+   }
+} %>

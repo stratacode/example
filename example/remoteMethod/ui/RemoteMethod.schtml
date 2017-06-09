@@ -37,10 +37,10 @@
          %>
 
          <span id="row1Cell" repeat=":= row1" repeatVarName="row">
-            <input type="text" value=':=: cvt.numberToString(row1.getNoError(row1Cell.this.repeatIndex))'>
+            <input type="text" value=':=: cvt.numberToString(row1.ret(row1Cell.this.repeatIndex))'>
          </span> + <br>
          <span id="row2Cell" repeat=":= row2" repeatVarName="row">
-            <input type="text" value=':=: cvt.numberToString(row2.getNoError(row2Cell.this.repeatIndex))'>
+            <input type="text" value=':=: cvt.numberToString(row2.ret(row2Cell.this.repeatIndex))'>
          </span> = <br>
          <span repeat=":= resultRow" repeatVarName="row">
             <input type="text" disabled="true" value=":= cvt.numberToString(row)">

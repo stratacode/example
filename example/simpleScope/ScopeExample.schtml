@@ -1,0 +1,21 @@
+<div id="ScopeExample" scope="request">
+   Welcome to page: <span><%= PageInfo.pageTitle %></span>
+   Edit <input type="text" value=":=: PageInfo.pageTitle"/>
+   <p/>
+   Site-wide announcement <span class="announcement"><%= Announcement.message %></span>
+   <%= Announcement.message %>
+   Edit <input type="text" value=":=: Announcement.message"/>
+   <p/>
+   Welcome <span><%= UserSession.userName %></span>
+   Edit <input type="text" value=":=: UserSession.userName"/>
+   <p/>
+   Page visits <%= PageUserInfo.numVisits %>
+   Session visits <%= UserSession.numPageViews %>
+
+   <%!
+     {
+        PageUserInfo.numVisits++;
+        UserSession.numPageViews++;
+     }
+   %>
+</div>
