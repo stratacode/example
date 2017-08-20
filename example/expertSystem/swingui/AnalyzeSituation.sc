@@ -56,8 +56,9 @@ AnalyzeSituation extends JPanel implements PanelStyle {
       }
    }
 
-   factorValueChoices.factorValueChoice.factorValueChoiceRadio lastRadioButton := ((factorValueChoices.factorValueChoice) factorValueChoices.lastComponent).factorValueChoiceRadio;
-   int lastListY := (int) (lastRadioButton.location.y + lastRadioButton.size.height);
+   //factorValueChoices.factorValueChoice.factorValueChoiceRadio lastRadioButton := ((factorValueChoices.factorValueChoice) factorValueChoices.lastComponent).factorValueChoiceRadio;
+   java.awt.Component lastComponent := factorValueChoices.lastComponent;
+   int lastListY := (int) (lastComponent.location.y + lastComponent.size.height);
 
    // When Next button is pressed, record the value for the current
    // factor, and iterate to the next factor
