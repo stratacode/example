@@ -40,11 +40,14 @@ class TodoList {
    }
 
    void removeComplete() {
-      ArrayList<TodoItem> newTodos = new ArrayList<TodoItem>();
-      for (TodoItem todo: todos) {
-         if (!todo.complete) 
-            newTodos.add(todo);
+      for (int i = 0; i < todos.size(); i++) {
+         TodoItem todo = todos.get(i);
+         if (todo.complete) {
+            todos.remove(i);
+
+            DynUtil.dispose(todo);
+            i--;
+         }
       }
-      todos = newTodos;
    }
 }
