@@ -1,4 +1,3 @@
-public example.todo.jsui extends model, html.schtml, util {
-   inheritPackage = false;
+public example.todo.jsui extends html.schtml, model {
    codeFunction = sc.layer.CodeFunction.UI;
 }
