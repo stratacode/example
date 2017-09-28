@@ -23,15 +23,15 @@ public class EditQuestion extends JPanel {
    // some instructions to the user.
    object instructionsText extends JTextArea {
       text = "Select a quiz from the top list, and a question to edit\n" + 
-	     "from the bottom list.\n\n" + 
-	     "You can add a new quiz or question, or delete an existing\n" + 
-	     "quiz or question, by selecting the appropriate option from\n" + 
-	     "each list's context menu.";
+             "from the bottom list.\n\n" + 
+             "You can add a new quiz or question, or delete an existing\n" + 
+             "quiz or question, by selecting the appropriate option from\n" + 
+             "each list's context menu.";
       editable = false;
       focusable = false;
       opaque = false;
       location := SwingUtil.point(xpad, 30);
-      size := preferredSize;	       
+      size := preferredSize;               
       visible := (question == null);
    }
 
@@ -50,10 +50,10 @@ public class EditQuestion extends JPanel {
       size := SwingUtil.dimension(displayWidth, textAreaHeight);
       visible := (question != null);
       object questionText extends JTextArea {
-	 text :=: question.question;
+         text :=: question.question;
       }
    }
-	 
+         
    // Create a group of radio buttons for the answer choices.  Each
    // radio button is followed by the answer choice text to be entered
    // by the user.
@@ -118,9 +118,9 @@ public class EditQuestion extends JPanel {
    // Create a ButtonGroup for the radio buttons
    object answerChoiceButtons extends ButtonGroup {
       buttons = Arrays.asList
-	 (new AbstractButton[] { answerChoice0, answerChoice1, answerChoice2, answerChoice3 });
+         (new AbstractButton[] { answerChoice0, answerChoice1, answerChoice2, answerChoice3 });
       selectedIndex :=: question.answerIndex;
-   }  	  
+   }            
    
    // Another scrollable text area for the answer detail
    object answerDetailLabel extends JLabel {
@@ -136,7 +136,7 @@ public class EditQuestion extends JPanel {
       size := SwingUtil.dimension(displayWidth, textAreaHeight);
       visible := (question != null);
       object answerDetailText extends JTextArea {
-	 text :=: question.answerDetail;
+         text :=: question.answerDetail;
       }
    }
    
@@ -152,7 +152,7 @@ public class EditQuestion extends JPanel {
       text = "Discard Changes";
       clickCount =: gotoDiscardChanges();
       location := SwingUtil.point(saveQuestionButton.location.x + saveQuestionButton.size.width + gap, 
-				  saveQuestionButton.location.y);
+                                  saveQuestionButton.location.y);
       size := preferredSize;
       visible := (question != null);
    }
@@ -166,7 +166,7 @@ public class EditQuestion extends JPanel {
    Question findQuestion(long questionId, boolean newQuestionEdit) {
       // Make sure we're initialized
       if (dataManager == null) 
-	 return null;
+         return null;
 
       // Whenever we switch to a different question, first make sure
       // to discard any changes made to the current question.  If we
@@ -174,32 +174,32 @@ public class EditQuestion extends JPanel {
       // we've made even without us explicitly saving the current
       // question.
       if ((question != null) && (question.id > 0)) {
-	 try {
-	    dataManager.discardQuestionChanges(question);
-	 }
-	 catch (EntityNotFoundException e) {
-	    // Do nothing if this question no longer exists
-	 }
+         try {
+            dataManager.discardQuestionChanges(question);
+         }
+         catch (EntityNotFoundException e) {
+            // Do nothing if this question no longer exists
+         }
       }
 
       if ((questionId == 0) && !newQuestionEdit)
-	 return null;
+         return null;
 
       if (newQuestionEdit)
-	 return new Question();
+         return new Question();
 
       Question quest = dataManager.findQuestion(questionId);
 
       // If this question no longer exists, pop up a dialog with an
       // error message, then tell the question list to refresh itself
       if (quest == null) {
-	 JOptionPane.showMessageDialog
-	    (SwingUtilities.windowForComponent(this), 
-	     "Question " + (state.questionIndex + 1) + " in quiz " + state.quizName + " does not exist.", 
-	     "Invalid question", JOptionPane.WARNING_MESSAGE);
+         JOptionPane.showMessageDialog
+            (SwingUtilities.windowForComponent(this), 
+             "Question " + (state.questionIndex + 1) + " in quiz " + state.quizName + " does not exist.", 
+             "Invalid question", JOptionPane.WARNING_MESSAGE);
 
-	 state.toggleQuizListRefresh();
-	 return null;
+         state.toggleQuizListRefresh();
+         return null;
       }
 
       return quest;
@@ -213,48 +213,48 @@ public class EditQuestion extends JPanel {
     */
    void gotoSaveQuestion() {
       if (StringUtil.isBlank(question.question) ||
-	  StringUtil.isBlank(question.answerChoices[0]) ||
-	  StringUtil.isBlank(question.answerChoices[1]) ||
-	  StringUtil.isBlank(question.answerChoices[2]) ||
-	  StringUtil.isBlank(question.answerChoices[3]) ||
-	  StringUtil.isBlank(question.answerDetail)) {
-	 JOptionPane.showMessageDialog(SwingUtilities.windowForComponent(this), 
-				       "Please fill in all the question and answer information.",
-				       "Missing Data", JOptionPane.ERROR_MESSAGE);
-	 return;
+          StringUtil.isBlank(question.answerChoices[0]) ||
+          StringUtil.isBlank(question.answerChoices[1]) ||
+          StringUtil.isBlank(question.answerChoices[2]) ||
+          StringUtil.isBlank(question.answerChoices[3]) ||
+          StringUtil.isBlank(question.answerDetail)) {
+         JOptionPane.showMessageDialog(SwingUtilities.windowForComponent(this), 
+                                       "Please fill in all the question and answer information.",
+                                       "Missing Data", JOptionPane.ERROR_MESSAGE);
+         return;
       }
       if (question.answerIndex == Question.NO_ANSWER) {
-	 JOptionPane.showMessageDialog(SwingUtilities.windowForComponent(this), 
-				       "Please select the correct answer.", 
-				       "Missing Data", JOptionPane.ERROR_MESSAGE);
-	 return;
+         JOptionPane.showMessageDialog(SwingUtilities.windowForComponent(this), 
+                                       "Please select the correct answer.", 
+                                       "Missing Data", JOptionPane.ERROR_MESSAGE);
+         return;
       }
 
       if (state.newQuestionEdit) {
-	 try {
-	    dataManager.addQuestion(state.quizName, question);
-	 }
-	 catch (EntityNotFoundException e) {	 
-	    JOptionPane.showMessageDialog
-	       (SwingUtilities.windowForComponent(this), 
-		"Quiz " + state.quizName + " does not exist.", 
-		"Invalid quiz", JOptionPane.WARNING_MESSAGE);
-	    state.toggleQuizListRefresh();	    
-	 }
-	 state.clearNewQuestionEdit();
+         try {
+            dataManager.addQuestion(state.quizName, question);
+         }
+         catch (EntityNotFoundException e) {         
+            JOptionPane.showMessageDialog
+               (SwingUtilities.windowForComponent(this), 
+                "Quiz " + state.quizName + " does not exist.", 
+                "Invalid quiz", JOptionPane.WARNING_MESSAGE);
+            state.toggleQuizListRefresh();            
+         }
+         state.clearNewQuestionEdit();
       }
       else {
-	 try {
-	    dataManager.updateQuestion(question);
-	 }
-	 catch (OptimisticLockException e) {
-	    JOptionPane.showMessageDialog
-	       (SwingUtilities.windowForComponent(this),
-		"Question " + (state.questionIndex + 1) + " has been modified " + 
-		"by another user.  Please discard your changes and try again.",
-		"Stale Question", JOptionPane.WARNING_MESSAGE);
-	    return;
-	 }
+         try {
+            dataManager.updateQuestion(question);
+         }
+         catch (OptimisticLockException e) {
+            JOptionPane.showMessageDialog
+               (SwingUtilities.windowForComponent(this),
+                "Question " + (state.questionIndex + 1) + " has been modified " + 
+                "by another user.  Please discard your changes and try again.",
+                "Stale Question", JOptionPane.WARNING_MESSAGE);
+            return;
+         }
       }
 
       // No question is now selected
@@ -271,26 +271,26 @@ public class EditQuestion extends JPanel {
    void gotoDiscardChanges() {
       // Confirm discard
       int option = JOptionPane.showConfirmDialog
-	 (SwingUtilities.windowForComponent(this),
-	  state.newQuestionEdit ? "This question will not be saved." : 
-	  "All changes to this question will be discarded.",
-	  "Confirm Discard Changes", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+         (SwingUtilities.windowForComponent(this),
+          state.newQuestionEdit ? "This question will not be saved." : 
+          "All changes to this question will be discarded.",
+          "Confirm Discard Changes", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
 
       if (option == JOptionPane.CANCEL_OPTION)
-	 return;
+         return;
 
       // If this was a new question, simply abandon the Question
       // object which we created earlier.  Otherwise, refresh it with
       // the data found in the database, abandoning our changes.
       if (state.newQuestionEdit) 
-	 state.clearNewQuestionEdit();
+         state.clearNewQuestionEdit();
       else {
-	 try {
-	    dataManager.discardQuestionChanges(question);
-	 }
-	 catch (EntityNotFoundException e) {
-	    // Do nothing if this question no longer exists
-	 }
+         try {
+            dataManager.discardQuestionChanges(question);
+         }
+         catch (EntityNotFoundException e) {
+            // Do nothing if this question no longer exists
+         }
       }
 
       // No question is now selected
