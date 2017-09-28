@@ -80,13 +80,22 @@ public class QuizList extends JPanel {
     */
    void gotoAddQuiz() {
       String newQuizName = (String) sc.util.DialogManager.getDialogAnswer("newQuizName");
+      boolean needsSave = false;
       if (newQuizName == null)
          newQuizName = nameQuiz.showInputDialog();
+      else
+         needsSave = true;
 
       // If a valid quiz name wasn't specified (e.g., because the user
       // canceled the dialog), then a new quiz was not created
       if (newQuizName == null)
-	 return;
+  	     return;
+
+      // When using the dialog this happens in the property listener but when driven by a script we do it here
+      if (needsSave) {
+         nameQuiz.quizName = newQuizName;
+         nameQuiz.saveQuiz();
+      }
 
       // Refresh the quiz name list to include the one we just created
       state.toggleQuizListRefresh();

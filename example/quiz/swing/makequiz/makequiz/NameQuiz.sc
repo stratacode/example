@@ -63,57 +63,61 @@ public class NameQuiz extends WindowAdapter implements PropertyChangeListener {
     */
    public void propertyChange(PropertyChangeEvent event) {
       if (quizNameDialog.isVisible() && 
-	  (event.getSource() == optionPane) && 
-	  (event.getPropertyName().equals(JOptionPane.VALUE_PROPERTY))) {
-	 Object value = optionPane.getValue();
-	 
-	 if (value == JOptionPane.UNINITIALIZED_VALUE) {
-	    // Ignore reset
-	    return;
-	 }
+          (event.getSource() == optionPane) && 
+          (event.getPropertyName().equals(JOptionPane.VALUE_PROPERTY))) {
+         Object value = optionPane.getValue();
+         
+         if (value == JOptionPane.UNINITIALIZED_VALUE) {
+            // Ignore reset
+            return;
+         }
 
-	 // Reset the JOptionPane's value.  If we don't do this, then
-	 // if the user presses the same button next time, no property
-	 // change event will be fired.
-	 optionPane.setValue(JOptionPane.UNINITIALIZED_VALUE);
+         // Reset the JOptionPane's value.  If we don't do this, then
+         // if the user presses the same button next time, no property
+         // change event will be fired.
+         optionPane.setValue(JOptionPane.UNINITIALIZED_VALUE);
 
-	 // OK button was pressed
-	 if (value.equals(JOptionPane.OK_OPTION)) {
-	    quizName = quizName.trim();
+         // OK button was pressed
+         if (value.equals(JOptionPane.OK_OPTION)) {
+            saveQuiz();
+         }
 
-	    // Don't allow empty strings
-	    if (StringUtil.isBlank(quizName)) {
-	       quizNameField.selectAll();
-	       JOptionPane.showMessageDialog
-		  (quizNameDialog, "Please specify a quiz name.", "Try Again", JOptionPane.ERROR_MESSAGE);
-	       quizNameField.requestFocusInWindow();
-	    }
+         // Cancel button was pressed, or the dialog was closed - set
+         // quizName to null
+         else {
+            quizName = null;
+            quizNameDialog.setVisible(false);
+         }
+      }
+   }
 
-	    // Just try to create the quiz; if one already exists with
-	    // this name, we'll get an exception.
-	    else {
-	       try {
-		  Quiz quiz = new Quiz();
-		  quiz.name = quizName;
-		  dataManager.persistQuiz(quiz);
-		  quizNameDialog.setVisible(false);
-	       }
-	       catch (EntityExistsException e) {
-		  quizNameField.selectAll();
-		  JOptionPane.showMessageDialog
-		     (quizNameDialog, "Quiz \"" + quizName + "\" " + "already exists!\n" + 
-		      "Please use another name.", "Try Again", JOptionPane.ERROR_MESSAGE);
-		  quizNameField.requestFocusInWindow();
-	       }
-	    }
-	 }
+   public void saveQuiz() {
+      quizName = quizName.trim();
 
-	 // Cancel button was pressed, or the dialog was closed - set
-	 // quizName to null
-	 else {
-	    quizName = null;
-	    quizNameDialog.setVisible(false);
-	 }
+      // Don't allow empty strings
+      if (StringUtil.isBlank(quizName)) {
+         quizNameField.selectAll();
+         JOptionPane.showMessageDialog
+            (quizNameDialog, "Please specify a quiz name.", "Try Again", JOptionPane.ERROR_MESSAGE);
+         quizNameField.requestFocusInWindow();
+      }
+
+
+
+      else {
+         try {
+            Quiz quiz = new Quiz();
+            quiz.name = quizName;
+            dataManager.persistQuiz(quiz);
+            quizNameDialog.setVisible(false);
+         }
+         catch (EntityExistsException e) {
+            quizNameField.selectAll();
+            JOptionPane.showMessageDialog
+               (quizNameDialog, "Quiz \"" + quizName + "\" " + "already exists!\n" +
+                "Please use another name.", "Try Again", JOptionPane.ERROR_MESSAGE);
+            quizNameField.requestFocusInWindow();
+         }
       }
    }
 }
