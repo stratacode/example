@@ -38,7 +38,7 @@ UnitConverterInst {
     cmd.print();
  
     colorChooser {
-      color :=: colorChoice.selected ? AdjustableAppFrame.this.background : AdjustableAppFrame.this.foreground;
+      color :=: colorChoice.selected ? UnitConverterInst.this.background : UnitConverterInst.this.foreground;
     }
 }
 

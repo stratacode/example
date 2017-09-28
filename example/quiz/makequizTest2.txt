@@ -7,8 +7,11 @@ MakeQuizInit {
       innerSplitPane {
          quizListPanel {
             state.quizName = "myquiz";
-            cmd.sleep(500);
+            cmd.sleep(2000);
+            cmd.addDialogAnswer("confirmDelete", javax.swing.JOptionPane.OK_OPTION);
             { if (state.quizName != null) gotoDeleteQuiz(); }
+            // register an answer for the new quiz dialog
+            cmd.addDialogAnswer("newQuizName", "myquiz");
             gotoAddQuiz();
             cmd.sleep(500);
          }

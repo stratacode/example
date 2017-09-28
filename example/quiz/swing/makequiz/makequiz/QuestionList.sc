@@ -109,6 +109,9 @@ public class QuestionList extends JPanel {
       if (!newQuestionEdit)
 	 return questions;
 
+      if (questions == null)
+         questions = java.util.Collections.emptyList();
+
       List allQuestions = new ArrayList<Question>(questions);
       allQuestions.add(new Question());
       return allQuestions;

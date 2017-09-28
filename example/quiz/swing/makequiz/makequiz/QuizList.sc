@@ -79,7 +79,9 @@ public class QuizList extends JPanel {
     * to name the quiz, and persists it in the database.
     */
    void gotoAddQuiz() {
-      String newQuizName = nameQuiz.showInputDialog();
+      String newQuizName = (String) sc.util.DialogManager.getDialogAnswer("newQuizName");
+      if (newQuizName == null)
+         newQuizName = nameQuiz.showInputDialog();
 
       // If a valid quiz name wasn't specified (e.g., because the user
       // canceled the dialog), then a new quiz was not created
@@ -97,17 +99,22 @@ public class QuizList extends JPanel {
     * Deletes the currently selected quiz from the database.
     */
    void gotoDeleteQuiz() {
+      System.out.println("*** in gotoDeleteQuiz");
       // Confirm delete
-      int option = JOptionPane.showConfirmDialog
-	 (SwingUtilities.windowForComponent(this), 
+      Integer option = (Integer) sc.util.DialogManager.getDialogAnswer("confirmDelete");
+      if (option == null)
+         option = JOptionPane.showConfirmDialog(SwingUtilities.windowForComponent(this), 
 	  "Are you sure you want to delete quiz " + state.quizName + "?", 
 	  "Confirm Delete", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
 
+      System.out.println("*** after dialog with option: " + option);
       if (option == JOptionPane.CANCEL_OPTION)
          return;
 
       try {
+         System.out.println("*** before delete quiz: " + state.quizName);
          dataManager.deleteQuiz(state.quizName);
+         System.out.println("*** after delete quiz: " + state.quizName);
       }
       catch (EntityNotFoundException e) {
 	 // Somebody must have deleted this quiz before us;
