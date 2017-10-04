@@ -2,7 +2,7 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd" version="2.1">
+        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd" version="2.0">
   <persistence-unit name="quizData">
     <provider>org.datanucleus.api.jpa.PersistenceProviderImpl</provider>
     <class>sc.example.quiz.Quiz</class>
@@ -17,9 +17,14 @@
       <property name="javax.persistence.jdbc.user" value=""/>
       <property name="javax.persistence.jdbc.password" value=""/>
 -->
+<!-- worked in 4.0.6
       <property name="datanucleus.autoCreateSchema" value="true"/>
       <property name="datanucleus.validateTables" value="false"/>
       <property name="datanucleus.validateConstraints" value="false"/>
+-->
+      <property name="datanucleus.schema.autoCreateDatabase" value="true"/>
+      <property name="datanucleus.schema.validateTables" value="false"/>
+      <property name="datanucleus.schema.validateConstraints" value="false"/>
     </properties>
   </persistence-unit>
 </persistence>

@@ -1,5 +1,5 @@
 cmd.path="makequiz";
-cmd.sleep(5000);
+cmd.sleep(3000);
 
 MakeQuizInit {
    outerSplitPane {
@@ -19,8 +19,7 @@ MakeQuizInit {
                }
             }
          }
-         cmd.sleep(5000);
+         cmd.sleep(3000);
       }
    }
 }
-
