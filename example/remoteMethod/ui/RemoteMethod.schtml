@@ -1,10 +1,10 @@
 <html>
-   <body><div class="appFrame">
+   <body><div id="app" class="appFrame">
       Simple call to the server, result is ignored:
-      <input type="button" value="Echo hello on server" clickEvent="=: echoHello()"/>
+      <input id="helloButton" type="button" value="Echo hello on server" clickEvent="=: echoHello()"/>
       <p>
       Call to server when button is pressed.  
-      <form submitEvent="=: remoteResult = sayHello(nameField.value)">
+      <form id="sayHelloForm" submitEvent="=: remoteResult = sayHello(nameField.value)">
          <%! String remoteResult; %>
          <input id="nameField" type="text"/>
          <input type="submit" value="Say hello"/><br/>
