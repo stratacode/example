@@ -1,3 +1,3 @@
 
-public example.unitConverter.adjust extends style, swing.adjust {
+public example.unitConverter.adjust extends style, extendedModel, swing.adjust {
 }
