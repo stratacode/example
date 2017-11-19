@@ -1,0 +1,63 @@
+import sc.html.TestPageLoader;
+
+cmd.edit = false;
+
+TestPageLoader testLoader = new TestPageLoader(cmd);
+sc.layer.AsyncResult processRes = testLoader.loadPage("RemoteMethod");
+
+RemoteMethod {
+   body {
+      app {
+         helloButton.click();
+
+         sayHelloForm {
+            nameField.value = "StrataCode!";
+            submit();
+         }
+
+         childName.value = "S";
+         childName.value = "St";
+         childName.value = "Str";
+         childName.value = "Stra";
+         childName.value = "Strat";
+         childName.value = "Strata";
+         childName.value = "StrataC";
+         childName.value = "StrataCo";
+         childName.value = "StrataCod";
+         childName.value = "StrataCode";
+
+         a.value = "123";
+         b.value = "456";
+
+         list {
+            row1.set(0, 11.1);
+            row1.set(1, 22.2);
+            row1.set(2, 33.3);
+
+            row2.set(0, 33.3);
+            row2.set(1, 55.5);
+            row2.set(2, 88.8);
+         }
+
+         condDisplayMotd.showMOTD = true;
+         cmd.sleep(500);
+         condDisplayMotd.showMOTD = false;
+         cmd.sleep(500);
+         condDisplayMotd.showMOTD = true;
+         cmd.sleep(500);
+         condDisplayMotd.showMOTD = false;
+         cmd.sleep(500);
+         condDisplayMotd.showMOTD = true;
+         cmd.sleep(500);
+         condDisplayMotd.showMOTD = false;
+         cmd.sleep(500);
+         condDisplayMotd.showMOTD = true;
+         cmd.sleep(500);
+      }
+   }
+}
+
+cmd.sleep(2000);
+testLoader.savePage("RemoteMethod", 1);
+testLoader.endSession(processRes);
+
