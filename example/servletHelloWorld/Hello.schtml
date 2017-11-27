@@ -1,4 +1,5 @@
-<%! class Hello {
-    String message = "Hello World";
-} %>
-<html><body><%= message %></body></html>
+<html>
+<%! String message = "Hello World"; %>
+
+<body><%= message %></body>
+</html>

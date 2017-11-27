@@ -1,4 +1,3 @@
-<%! Hello { 
-  message = "Hello StrataCode";
-} %>
-<%= super.output() %>
+<html>
+<%! message = "Hello StrataCode"; %>
+</html>
