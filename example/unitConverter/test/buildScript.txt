@@ -1,3 +1,4 @@
+cmd.edit = true;
 cmd.pauseTime = 1;
 
 object UnitConverter extends AppFrame {
@@ -57,7 +58,7 @@ object UnitConverter extends AppFrame {
 
    object unit1Label extends JLabel {
       text := currentConverter.unit1;  // Display's converter's "unit 1"
-      labelFor = unit1Field;
+      //labelFor = unit1Field;
       location := SwingUtil.point(xpad, row1y + baseline);
       size := preferredSize;
 
@@ -70,11 +71,15 @@ object UnitConverter extends AppFrame {
       text :=: numberConverter.numberToString(currentConverter.value1);
    }
 
+   unit1Label {
+      labelFor = unit1Field;
+   }
+
    int row2y := (int)(unit1Field.location.y + unit1Field.size.height + ypad);
 
    object unit2Label extends JLabel {
       text := currentConverter.unit2;
-      labelFor = unit2Field;
+      //labelFor = unit2Field;
       size := preferredSize;
       location := SwingUtil.point(unit1Label.location.x, row2y + baseline);
 
@@ -84,6 +89,10 @@ object UnitConverter extends AppFrame {
       location := SwingUtil.point(xpad + unit2Label.preferredSize.width + gap, row2y);
       size := SwingUtil.dimension(windowWidth - unit2Label.size.width - xpad - 2*gap, preferredSize.height);
       text :=: numberConverter.numberToString(currentConverter.value2);
+   }
+
+   unit2Label {
+      labelFor = unit2Field;
    }
 
    object errorLabel extends JLabel {

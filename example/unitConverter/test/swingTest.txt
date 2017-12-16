@@ -1,3 +1,4 @@
+cmd.edit = true;
 cmd.pauseTime = 100;
 cmd.sleep(1000); // Wait until main creates its instance to avoid a race condition
 UnitConverterInst {

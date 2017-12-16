@@ -1,5 +1,6 @@
 // Need to let the main create the unit converter so we don't get two of them since getX is
 // not synchronized yet
+cmd.edit = true;
 cmd.sleep(5000);
 
 // Run sc unitConverter/adjust -i, then feed these commands to the interpreter
