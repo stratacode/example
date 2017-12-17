@@ -1,4 +1,4 @@
-cmd.edit = false;
+cmd.edit = true; // this test runs in edit mode as well because it hits problems with needsOwnClass and stale type names
 cmd.addDialogAnswer("Pick a Quiz", "Art History");
 
 cmd.pauseTime=100;
