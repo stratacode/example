@@ -1,3 +1,4 @@
+cmd.edit = true;
 cmd.sleep(5000);
 
 cmd.path="makequiz";
