@@ -1,14 +1,7 @@
 import sc.html.TestPageLoader;
-import sc.obj.CurrentScopeContext;
-
-cmd.edit = false;
 
 TestPageLoader testLoader = new TestPageLoader(cmd);
-sc.layer.AsyncResult processRes = testLoader.loadPage("RemoteMethod", "remoteMethodPage");
-
-if (waitForReady("remoteMethodPage", 3000) == null) {
-   throw new AssertionError("Client failed to connect to remoteMethodPage in time");
-}
+testLoader.loadPageAndWait("RemoteMethod", "remoteMethodPage");
 
 RemoteMethod {
    body {
@@ -69,4 +62,3 @@ RemoteMethod {
 // server's output
 StringBuilder pageOutput = RemoteMethod.output();
 testLoader.savePage("RemoteMethod", 2, pageOutput.toString());
-testLoader.endSession(processRes);

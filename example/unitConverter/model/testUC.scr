@@ -1,0 +1,27 @@
+UnitConverter {
+   converters {
+      temperature {
+         value1 = 100;
+         value1 = 101;
+         value1 = 102;
+         value1 = 103;
+         value1 = 104;
+
+         value2 = 212;
+         value2 = 211;
+         value2 = 210;
+         value2 = 209;
+         value2 = 208;
+      }
+   }
+   currentConverterIndex = 1;
+   converters {
+      distance {
+         value1 = 55;
+         value1 = 56;
+         value1 = 57;
+         value1 = 58;
+         value1 = 59;
+      }
+   }
+}
