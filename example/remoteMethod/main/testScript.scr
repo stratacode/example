@@ -1,7 +1,6 @@
-import sc.html.TestPageLoader;
+cmd.includeSuper();
 
-TestPageLoader testLoader = new TestPageLoader(cmd);
-testLoader.loadPageAndWait("RemoteMethod", "remoteMethodPage");
+pageLoader.loadPageAndWait("RemoteMethod", "remoteMethodPage");
 
 RemoteMethod {
    body {
@@ -56,9 +55,9 @@ RemoteMethod {
    }
 
    // client's output
-   testLoader.savePage("RemoteMethod", 1, output_c().toString());
+   pageLoader.savePage("RemoteMethod", 1, output_c().toString());
 }
 
 // server's output
 StringBuilder pageOutput = RemoteMethod.output();
-testLoader.savePage("RemoteMethod", 2, pageOutput.toString());
+pageLoader.savePage("RemoteMethod", 2, pageOutput.toString());

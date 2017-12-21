@@ -22,6 +22,44 @@ UnitConverter {
          value1 = 57;
          value1 = 58;
          value1 = 59;
+
+         value2 = 55;
+         value2 = 56;
+         value2 = 57;
+         value2 = 58;
+         value2 = 59;
+      }
+   }
+   currentConverterIndex = 2;
+   converters {
+      speed {
+         value1 = 0;
+         value1 = 10;
+         value1 = 20;
+         value1 = 30;
+         value1 = 40;
+
+         value2 = 40;
+         value2 = 30;
+         value2 = 20;
+         value2 = 10;
+         value2 = 0;
+      }
+   }
+   currentConverterIndex = 3;
+   converters {
+      power {
+         value1 = 0;
+         value1 = 10;
+         value1 = 20;
+         value1 = 30;
+         value1 = 40;
+
+         value2 = 40;
+         value2 = 30;
+         value2 = 20;
+         value2 = 10;
+         value2 = 0;
       }
    }
 }
