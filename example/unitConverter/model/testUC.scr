@@ -1,3 +1,5 @@
+cmd.pauseTime = 100;
+
 UnitConverter {
    converters {
       temperature {
