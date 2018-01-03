@@ -1,0 +1,25 @@
+cmd.pauseTime = 250;
+//cmd.edit = false;
+
+TodoList {
+   todos.size(); 
+   assert todos.size() == 3 : "No todos";
+   todos.get(1).complete = true;
+   int newIx = todos.size();
+   todoText = "A new entry";
+   addTodoEntry();
+   removeComplete();
+
+   while (todos.size() > 0) {
+      todos.get(0).complete = true;
+      removeComplete();
+   }
+
+   //todos.get(0).complete = true;
+   //removeComplete();
+
+   todoText = "done";
+   addTodoEntry();
+   cmd.sleep(1000);
+   todos.get(0).complete = true;
+}
