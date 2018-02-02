@@ -8,28 +8,16 @@ UnitConverter {
          value1 = 102;
          value1 = 103;
          value1 = 104;
-
-         value2 = 212;
-         value2 = 211;
-         value2 = 210;
-         value2 = 209;
-         value2 = 208;
       }
    }
    currentConverterIndex = 1;
    converters {
       distance {
-         value1 = 55;
-         value1 = 56;
-         value1 = 57;
-         value1 = 58;
-         value1 = 59;
-
-         value2 = 55;
-         value2 = 56;
-         value2 = 57;
-         value2 = 58;
-         value2 = 59;
+         value1 = 100;
+         value1 = 101;
+         value1 = 102;
+         value1 = 103;
+         value1 = 104;
       }
    }
    currentConverterIndex = 2;
@@ -40,12 +28,6 @@ UnitConverter {
          value1 = 20;
          value1 = 30;
          value1 = 40;
-
-         value2 = 40;
-         value2 = 30;
-         value2 = 20;
-         value2 = 10;
-         value2 = 0;
       }
    }
    currentConverterIndex = 3;
@@ -56,12 +38,6 @@ UnitConverter {
          value1 = 20;
          value1 = 30;
          value1 = 40;
-
-         value2 = 40;
-         value2 = 30;
-         value2 = 20;
-         value2 = 10;
-         value2 = 0;
       }
    }
 }
