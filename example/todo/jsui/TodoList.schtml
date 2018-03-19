@@ -1,6 +1,6 @@
-<!-- TodoList.schtml (by default) modifies the TodoList class in the previous model layer.
-     It sets needsRefresh so we refresh the bindings on this page for updating the getRemaining
-     method. -->
+<!-- TodoList.schtml modifies the TodoList class in the previous model layer.
+     Setting 'needsRefresh' here because the 'getRemaining' method needs to be
+     refreshed after any changes to the page are made. -->
 <html needsRefresh="true">
    <head>
       <link rel="stylesheet" type="text/css" href="todoStyle.css" />
@@ -9,9 +9,13 @@
      <div class="appFrame">
         <h2>Todo List</h2>
         <div id="todoControl">
-           <!-- Not just a script!  These values are updated automatically -->
+           <!-- These next two expressions are updated incrementally in response to property change events.  For 'getSize' we detect
+                change events when the 'todos' list changes because it uses sc.util.ArrayList.  It's trickier with getRemaining 
+                because it also needs to run after any change to a TodoItem's 'complete' value.  To handle that, rather than trigger
+                an extra event during that event, we take the easy way out and set needsRefresh on the page.  In that mode, after
+                any input events are fired, we revalidate all bindings in a 'do later' operation. -->
            <span><%= getRemaining(todos) %> of <%= getSize(todos) %> to do</span>
-           <!-- clickEvent changes when there's a click.  When that happens the binding calls: 'removeComplete()' -->
+           <!-- The clickEvent property is updated when the anchor tag is clicked on.  When that happens the binding calls: 'removeComplete()' -->
            [ <a href="#" clickEvent="=: removeComplete()">remove completed</a> ]
            <ul>
               <!-- Repeat the li tag once for each element in the todos list.
