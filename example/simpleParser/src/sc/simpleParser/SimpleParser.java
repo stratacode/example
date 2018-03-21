@@ -50,13 +50,18 @@ public class SimpleParser {
 
    public SimpleParser(String[] args) {
       initOptions(args);
+
       // The first argument is is the 'main-directory' - i.e. where we store the typeIndex
       sys = ParseUtil.createSimpleParser(".", classPath, externalClassPath, srcPath, null);
       // In case we use initTypeIndex, this will maintain this incrementally for speed.  Use TypeIndexModel.Rebuild to just rebuild it each time.
       sys.options.typeIndexMode = TypeIndexMode.Refresh;
+
+      // The simple parser creates a single layer to represent the classPath/srcPath you provided.  Since we are not running this code, it creates
+      // an inactive layer.  We need this layer for some of the APIs which work either in active or inactive mode like getSrcTypeDeclaration().
       sysLayer = sys.inactiveLayers.get(0);
    }
 
+   /** Iterate over the types selected from the command line and either print or do a find-replace and print the resulting code */
    public void run() {
       ArrayList<TypeDeclaration> types = new ArrayList<TypeDeclaration>();
       if (typeName != null) {
