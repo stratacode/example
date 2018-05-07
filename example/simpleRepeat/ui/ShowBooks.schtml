@@ -1,0 +1,37 @@
+<html>
+   <%!
+      class Author {
+         String name;
+         Book[] books;
+
+         Author(String name, Book[] books) {
+            this.name = name;
+            this.books = books;
+            for (Book book:books)
+               book.author = this;
+         }
+      }
+
+      class Book {
+         String title;
+         Author author;
+
+         Book(String title) {
+            this.title = title;
+         }
+      }
+
+      Author[] authors = new Author[]{new Author("Isaac Asimov", new Book[] {new Book("I Robot"), new Book("Foundation")}),
+                                      new Author("Octavia Butler", new Book[] {new Book("Adulthood Rites")}),
+                                      new Author("William Gibson", new Book[] {new Book("Neuromancer")})};
+   %>
+   <body>
+      <div id="showAuthors" repeat="= authors" repeatVarName="author">
+         <div id="showBooks" repeat="= author.books" repeatVarName="book">
+            <span><%= book.title %></span>
+            <span visible=":= repeatIndex != author.books.length">, </span>
+         </div>
+      </div>
+
+   </body>
+</html>

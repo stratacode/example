@@ -1,0 +1,31 @@
+<%@ @URL(pattern="/blog/[{blogId=integerLiteral}/][{postShortName=identifier}/]") %>
+<html>
+  <%!
+      int blogId;
+      String postShortName;
+
+      Blog blog := Blog.getBlog(blogId);
+      Post post := blog == null ? null : blog.getPost(postShortName);
+  %>
+  <body>
+      <span id="blogList" repeat=":= Blog.blogs" repeatVarName="curBlog">
+         <a href='= "/blog/" + curBlog.blogId + "/"' class=':= blog == curBlog ? "currentBlogLink" : "blogLink"'><%= curBlog.blogName %></a>
+      </span>
+      <div visible=":= blog != null" id="postList" repeat=":= blog.posts" repeatVarName="curPost">
+         <a href='= "/blog/" + blog.blogId + "/" + curPost.shortName + "/"' class=':= post == curPost ? "currentPostLink" : "postLink"'><%= curPost.title %></a>
+      </div>
+      <div id="blogDesc" visible=":= blog != null">
+         <%= blog.blogDesc %>
+         <div id="alt">
+            Please select a blog.
+         </div>
+      </div>
+      <div id="postContent" visible=":= post != null">
+         <h3><%= post.title %></h3>
+         <%= post.postText %>
+         <div id="alt">
+            Please select a post.
+         </div>
+      </div>
+  </body>
+</html>

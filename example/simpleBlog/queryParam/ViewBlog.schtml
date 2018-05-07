@@ -1,0 +1,33 @@
+<%@ @URL(pattern="/blog/") %>
+<html>
+  <%!
+      @QueryParam
+      int blogId;
+      @QueryParam(name="post")
+      String postShortName;
+
+      Blog blog := Blog.getBlog(blogId);
+      Post post := blog == null ? null : blog.getPost(postShortName);
+  %>
+  <body>
+      <span id="blogList" repeat=":= Blog.blogs" repeatVarName="curBlog">
+         <a href='= pageBaseURL + "?blogId=" + curBlog.blogId' class=':= blog == curBlog ? "currentBlogLink" : "blogLink"'><%= curBlog.blogName %></a>
+      </span>
+      <div visible=":= blog != null" id="postList" repeat=":= blog.posts" repeatVarName="curPost">
+         <a href='= pageBaseURL + "?blogId=" + blog.blogId + "&post=" + curPost.shortName' class=':= post == curPost ? "currentPostLink" : "postLink"'><%= curPost.title %></a>
+      </div>
+      <div id="blogDesc" visible=":= blog != null">
+         <%= blog.blogDesc %>
+      </div>
+      <div id="blogSelect" visible=":= blog == null">
+         Please select a blog.
+      </div>
+      <div id="postContent" visible=":= post != null">
+         <h3><%= post.title %></h3>
+         <%= post.postText %>
+      </div>
+      <div id="blogSelect" visible=":= post == null">
+         Please select a post.
+      </div>
+  </body>
+</html>
