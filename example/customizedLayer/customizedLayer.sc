@@ -1,1 +1,0 @@
-example.customizedLayer extends simpleBaseLayer {}

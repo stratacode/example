@@ -1,3 +1,0 @@
-example.extendedHelloWorld extends servletHelloWorld {
-
-}
