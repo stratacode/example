@@ -1,3 +1,4 @@
+// The classic TodoList example.  Unlike most examples, there's no 'view model' or coreui layer.
 class TodoList {
    @Component
    class TodoItem {
