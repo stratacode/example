@@ -9,7 +9,7 @@ public example.buildTag extends sys.std {
    String scmVersion;
 
    void init() {
-      if (activated) // Not loaded as part of a build so nothing to do here.
+      if (!activated) // Not loaded as part of a build so nothing to do here.
          return;
       String branch = FileUtil.execCmd("git symbolic-ref --short HEAD"); // Current branch name only
       if (branch != null) {
