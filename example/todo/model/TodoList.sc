@@ -14,7 +14,7 @@ class TodoList {
       new TodoItem("Run layerCake todo sample", true),
       new TodoItem("Check me and see it stay in sync", false),
       new TodoItem("Add a new entry and press 'remove completed'", false),
-   } */;
+   } */
 
    String todoText = "";
 
