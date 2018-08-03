@@ -5,5 +5,5 @@ package sc.example.unitConverter;
 example.unitConverter.jsui extends jetty.schtml, js.schtml, js.sync, coreui {
 // Without server
 //unitConverter.jsui extends js.schtml, coreui {
-   codeFunction = sc.layer.CodeFunction.UI;
+   codeType = sc.layer.CodeType.UI;
 }

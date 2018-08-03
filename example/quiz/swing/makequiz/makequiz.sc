@@ -8,6 +8,5 @@ import sc.example.quiz.*;
 import sc.example.quiz.swing.PopupMenuListener;
 
 public example.quiz.swing.makequiz extends example.quiz.persist.datanucleus, swing.core {
-   codeType = sc.layer.CodeType.Application;
-   codeFunction = sc.layer.CodeFunction.UI;
+   codeType = sc.layer.CodeType.UI;
 }

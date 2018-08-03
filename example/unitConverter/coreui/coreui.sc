@@ -1,4 +1,4 @@
 public example.unitConverter.coreui extends model {
-   codeFunction = sc.layer.CodeFunction.UI;
+   codeType = sc.layer.CodeType.UI;
    defaultSyncMode = sc.obj.SyncMode.Automatic;
 }

@@ -9,6 +9,5 @@ import javax.swing.border.Border;
 import sc.example.quiz.*;
 
 public example.quiz.swing.swingui extends example.quiz.data, swing.core {
-   codeType = sc.layer.CodeType.Application;
-   codeFunction = sc.layer.CodeFunction.UI;
+   codeType = sc.layer.CodeType.UI;
 }

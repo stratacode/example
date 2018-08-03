@@ -5,6 +5,6 @@ public example.todo.model extends util {
    //defaultSyncMode = sc.obj.SyncMode.Automatic;
    inheritPackage = false;
 
-   codeType = sc.layer.CodeType.Declarative;
-   codeFunction = sc.layer.CodeFunction.Model;
+   configLayer = true;
+   codeType = sc.layer.CodeType.Model;
 }
