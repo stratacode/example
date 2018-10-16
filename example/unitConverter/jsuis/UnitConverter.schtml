@@ -1,0 +1,6 @@
+<html>
+   <body>
+      <!-- modifies the tag in jsui to have the entire app-frame render on the server -->
+      <div id="appFrame" exec="server"/>
+   </body>
+</html>

@@ -6,7 +6,7 @@
       <link rel="stylesheet" type="text/css" href="todoStyle.css" />
    </head>
   <body>
-     <div class="appFrame">
+     <div class="appFrame" id="appFrame">
         <h2>Todo List</h2>
         <div id="todoControl">
            <!-- The following span tag's body contains two method calls getRemaining and getSize that are updated automatically from change events using data binding.
