@@ -1,0 +1,5 @@
+<!-- 
+  run the entire app on the server so that the 'todos' array and everything is only on the server
+  -->
+<html exec="server">
+</html>
