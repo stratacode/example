@@ -5,7 +5,6 @@ TodoList {
    todos.size(); 
    assert todos.size() == 3 : "No todos";
    todos.get(1).complete = true;
-   int newIx = todos.size();
    //cmd.targetRuntime = "js";
 
    todoText = "A new entry";
