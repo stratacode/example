@@ -1,1 +1,1 @@
-example.remoteMethod.uis extends ui {}
+example.remoteMethod.uis extends main {}

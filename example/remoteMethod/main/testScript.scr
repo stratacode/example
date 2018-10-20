@@ -2,6 +2,12 @@ cmd.includeSuper();
 
 pageLoader.loadPageAndWait("RemoteMethod", "remoteMethodPage");
 
+// Not required for the client version, but for the serverTag version
+// we need some pause time or else everything tends to run on the server
+// without syncing to the client.  After each change, we wake up the 'sync' thread
+// but it might not run until after we've finished more of the script.
+cmd.pauseTime = 50;
+
 RemoteMethod {
    body {
       app {
@@ -54,8 +60,8 @@ RemoteMethod {
       }
    }
 
-   // client's output
-   pageLoader.savePage("RemoteMethod", 1, output_c().toString());
+   // client's output - if it's a server tag, there's no RemoteMethod object.  Either way we can use the pageLoader for just eval'ing a script but keeping output_c() as a test of @Exec(clientOnly=true) and the serverTag property
+   pageLoader.savePage("RemoteMethod", 1, serverTag ? pageLoader.getClientBodyHTML() : output_c().toString());
 }
 
 // server's output
