@@ -36,14 +36,19 @@
               ArrayList<Number> resultRow := addListOfNumbers(row1, row2);
          %>
 
-         <span id="row1Cell" repeat=":= row1" repeatVarName="row">
-            <input type="text" value=':=: cvt.numberToString(row1.ret(row1Cell.this.repeatIndex))'>
+         <!-- For each element in row1 define an input tag -->
+         <span id="row1Cell" repeat=":= row1">
+            <!-- The input tag's value maps bi-directionally to row[i] via two bi-directional binding method calls numberToString (reverse method is stringToNumber) and 
+                 row1.ret (just like a get with a reverse method of set).
+                 When initially rendering the input tag, row1.ret(i)'s return value is passed to numberToString which converts returns a string that's displayed. 
+                 When the user changes the input tag's value, stringToNumber is called, then row1.set(i, newNum) -->
+            <input id="row1Input" type="text" value=':=: cvt.numberToString(row1.ret(row1Cell.this.repeatIndex))'>
          </span> + <br>
-         <span id="row2Cell" repeat=":= row2" repeatVarName="row">
-            <input type="text" value=':=: cvt.numberToString(row2.ret(row2Cell.this.repeatIndex))'>
+         <span id="row2Cell" repeat=":= row2">
+            <input id="row2Input" type="text" value=':=: cvt.numberToString(row2.ret(row2Cell.this.repeatIndex))'>
          </span> = <br>
          <span repeat=":= resultRow" repeatVarName="row">
-            <input type="text" disabled="true" value=":= cvt.numberToString(row)">
+            <input id="resultInput" type="text" disabled="true" value=":= cvt.numberToString(row)">
          </span><br>
       </div>
 
@@ -51,7 +56,7 @@
 
       <div id="condDisplayMotd">
          <%! boolean showMOTD = false; %>
-         <input type="checkbox" checked=":=: showMOTD"/>Show message?
+         <input id="motdInput" type="checkbox" checked=":=: showMOTD"/>Show message?
          <%= showMOTD ? motd.getMessage() : "message not shown" %>
       </div>
    </div></body>
