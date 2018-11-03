@@ -10,21 +10,24 @@ import java.util.LinkedHashSet;
 import java.util.TreeSet;
 
 /** 
- * This is a simple class which you can use a sample to learn how to create a parser from
- * a srcPath and classPath.  It has a few options but basically works to either print or do a find/replace
- * operation on one type or a set of matching types.  It does not yet edit expressions but it
- * could be enhanced to be a real find-replace tool.
+ * This example shows you how to use the parselets parsing, modelling, formatting, transpiling etc apis 
+ * without layer definition files or any of the other frameworks in StrataCode.  You provide simply 
+ * a srcPath for the source you want to parse and/or a classPath for the class files used by those source files.  
+ *
+ * This class has a few options but allows you to print or do a find/replace
+ * operation on one type or a set of matching types.  It does not yet change the expressions but it
+ * could be enhanced to be a real find-replace tool without too much effort.
  *
  * Although this uses StrataCode, for your example you'll have only one 'layer' called 'sysLayer'.  It's an
  * inactive layer because this tool is not going to run any code, just edit source more like an IDE.
  *
  * You specify class files in a traditional class path but you have a choice for how those classes are loaded.
- * Either the regular classPath, this processes class loader is used to load .class files and use to resolve
- * references.  For externalClassPath, these classes are loaded using the built-in StrataCode CFClass library which
+ * The regular classPath uses this classes class loader to load .class files as normal Java classes.
+ * The externalClassPath loads classes using the StrataCode CFClass library which
  * reads .class files just for their types, fields, method declarations, etc.  
  * You can use both at the same time, but it's not defined when there are references from classPath classes to externalClassPath classes.
  * The reverse direction is fine.
- * Using classPath can avoid loading classes twice but runs into some limitations so externalClassPath is probably the best way to go
+ * Using the system classPath can avoid loading classes twice but runs into some limitations so externalClassPath is probably the best way to go
  * for most purposes.
  */
 public class SimpleParser {
