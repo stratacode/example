@@ -26,15 +26,16 @@
                                       new Author("William Gibson", new Book[] {new Book("Neuromancer")})};
    %>
    <body>
-      <div id="showAuthors" repeat="= authors" repeatVarName="author">
-         <span><%= author.name %></span>
-         <div style="margin-left: 50px">
-            <div id="showBooks" repeat="= author.books" repeatVarName="book">
-               <span><%= book.title %></span>
-               <span visible=":= repeatIndex != author.books.length - 1">, </span>
-            </div>
-         </div>
-      </div>
-
+      <!-- Use repeat to iterate over authors, setting the author variable to the current element.  This example shows that 'dl' by default
+           has wrap=true.  This means only the body of the 'dl' tag is repeated.  With wrap=false, the default for most tags
+           the repeat tag itself is repeated.  -->
+      <dl id="showAuthors" repeat="= authors" repeatVarName="author">
+         <dt><%= author.name %>:</dt>
+         <dd>
+            <span id="showBooks" repeat="= author.books" repeatVarName="book">
+               <%= book.title + (repeatIndex == author.books.length-1 ? "" : ",") %>
+            </span>
+         </dd>
+      </dl>
    </body>
 </html>

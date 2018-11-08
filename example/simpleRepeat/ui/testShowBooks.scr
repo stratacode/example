@@ -1,0 +1,7 @@
+cmd.pauseTime = 500;
+ShowBooks {
+  authors[0].name = authors[0].name + " - prolific genius";
+  authors[0].books[1].title = authors[0].books[1].title.toUpperCase();
+  authors[1].name = authors[1].name + " - mind expanding";
+  authors[2].name = authors[2].name + " - futurific";
+}
