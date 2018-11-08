@@ -26,9 +26,7 @@
                                       new Author("William Gibson", new Book[] {new Book("Neuromancer")})};
    %>
    <body>
-      <!-- Use repeat to iterate over authors, setting the author variable to the current element.  This example shows that 'dl' by default
-           has wrap=true.  This means only the body of the 'dl' tag is repeated.  With wrap=false, the default for most tags
-           the repeat tag itself is repeated.  -->
+      <!-- Shows that 'dl' by default has wrap=true.  Only the body of the 'dl' tag is repeated. -->
       <dl id="showAuthors" repeat="= authors" repeatVarName="author">
          <dt><%= author.name %>:</dt>
          <dd>
