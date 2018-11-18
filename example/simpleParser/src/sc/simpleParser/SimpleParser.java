@@ -80,7 +80,7 @@ public class SimpleParser {
 
          LinkedHashSet<String> matchingTypeNames = new LinkedHashSet<String>();
          // NOTE: findName here is a prefix, not a regex or anything.  We should make that more flexible!
-         sys.findMatchingGlobalNames(null, sysLayer, findName, matchingTypeNames, true, false, false);
+         sys.findMatchingGlobalNames(null, sysLayer, findName, matchingTypeNames, true, false, false, 10000);
          if (matchingTypeNames.size() == 0)
             System.out.println("*** No matches with prefix: " + findName);
          else {
