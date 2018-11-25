@@ -19,7 +19,7 @@ class AdminServlet extends HttpServlet {
 
       Context ctx = null;
       try {
-         ctx = Context.initContext(request, response);
+         ctx = Context.initContext(request, response, null);
 
          // Output the document start
          ctx.write(%>

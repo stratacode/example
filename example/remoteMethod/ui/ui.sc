@@ -11,5 +11,6 @@ example.remoteMethod.ui extends server, html.schtml, util {
       // because we extend 'server' which extends just jetty.schtml to tie it to the server, we want to open the the possibility
       // of this layer also running on the client in a different configuration.  It depends on what other layers are included
       includeRuntimes("js", "java");
+      excludeProcess("Desktop");
    }
 }

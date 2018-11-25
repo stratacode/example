@@ -1,0 +1,16 @@
+cmd.includeSuper();
+
+pageLoader.loadPageAndWait("ScopeTest", "scopeTestPage"); 
+
+cmd.pauseTime = 250;
+// Announcement and UserSession classes are not defined in the JS runtime
+// so if we target 'js' we will get an error
+cmd.targetRuntime = "java_Server";
+
+Announcement {
+   message = message.replace("are", "were");
+}
+
+UserSession {
+   userName = "Fanny Bumpkiss";
+}

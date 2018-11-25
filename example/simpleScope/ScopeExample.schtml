@@ -1,21 +1,32 @@
-<div id="ScopeExample" scope="request">
+<div id="ScopeExample">
+   <i abstract="true" id="editField" style="text-indent: 40px; display: block"/>
+   <input abstract="true" id="inputTag" type="text" style="width: 200px"/>
+
+   <!-- Although the span wrapper tag around pageTitle is not necessary for HTML formatting, it allows the title to refresh
+        independently of the following input tag.  Currently we don't restore focus on an input tag that's re-rendered -->
    Welcome to page: <span><%= PageInfo.pageTitle %></span>
-   Edit <input type="text" value=":=: PageInfo.pageTitle"/>
+      <i extends="editField">Edit page title: <input extends="inputTag" value=":=: PageInfo.pageTitle"/></i>
    <p/>
-   Site-wide announcement <span class="announcement"><%= Announcement.message %></span>
-   <%= Announcement.message %>
-   Edit <input type="text" value=":=: Announcement.message"/>
+   Site announcement <span class="announcement"><%= Announcement.message %></span>
+      <i extends="editField">Edit announcement: <input extends="inputTag" value=":=: Announcement.message"/></i>
    <p/>
-   Welcome <span><%= UserSession.userName %></span>
-   Edit <input type="text" value=":=: UserSession.userName"/>
+   Welcome: <span><%= UserSession.userName %></span>
+      <i extends="editField">Edit userName: <input type="text" value=":=: UserSession.userName"/></i>
    <p/>
-   Page visits <%= PageUserInfo.numVisits %>
-   Session visits <%= UserSession.numPageViews %>
+   User page name: <span><%= PageUserInfo.userPageTitle %></span>
+       <i extends="editField">Edit my name for this page: <input extends="inputTag" value=":=: PageUserInfo.userPageTitle"/></i>
+   <p/>
+   <span>Window visits <%= WindowSession.numWindowVisits %></span> (always '1')
+   <br/>
+   <span>Page visits <%= PageUserInfo.numVisits %></span> (counts times this user loads this page)
+   <br/>
+   <span>Session visits <%= UserSession.numPageViews %></span> (counts times this user loads any page)
 
    <%!
-     {
-        PageUserInfo.numVisits++;
-        UserSession.numPageViews++;
-     }
+      public void onPageVisit() {
+         WindowSession.numWindowVisits++;
+         PageUserInfo.numVisits++;
+         UserSession.numPageViews++;
+      }
    %>
 </div>

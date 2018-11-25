@@ -1,5 +1,6 @@
+@Sync
 scope<session>
 object UserSession {
-   String userName = "Fanny Trumpkin";
+   String userName = "Fanny Bumpkin";
    int numPageViews;
 }

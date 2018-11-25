@@ -1,7 +1,7 @@
 <!-- TodoList.schtml modifies the TodoList class in the previous model layer.
-     Setting 'needsRefresh' here because the 'getRemaining' method needs to be
+     Setting 'refreshBindings' here because the 'getRemaining' method needs to be
      refreshed after any changes to the page are made. -->
-<html needsRefresh="true">
+<html refreshBindings="true">
    <head>
       <link rel="stylesheet" type="text/css" href="todoStyle.css" />
    </head>
@@ -11,7 +11,7 @@
         <div id="todoControl">
            <!-- The following span tag's body contains two method calls getRemaining and getSize that are updated automatically from change events using data binding.
                 The getSize call simply detects change events when the 'todos' list is modified.  But getRemaining
-                needs to run also after any change to a TodoItem's 'complete' status.  To handle that event with no additional code we have set 'needsRefresh=true'
+                needs to run also after any change to a TodoItem's 'complete' status.  To handle that event with no additional code we have set 'refreshBindings=true'
                 on this page to revalidate all bindings in a 'do later' event after any user input. -->
            <span><%= getRemaining(todos) %> of <%= getSize(todos) %> to do</span>
            <!-- The clickEvent property is updated when the anchor tag is clicked on.  When that happens the binding calls: 'removeComplete()' -->
