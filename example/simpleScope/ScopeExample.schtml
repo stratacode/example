@@ -3,17 +3,17 @@
    <input abstract="true" id="inputTag" type="text" style="width: 200px"/>
 
    <!-- Although the span wrapper tag around pageTitle is not necessary for HTML formatting, it allows the title to refresh
-        independently of the following input tag.  Currently we don't restore focus on an input tag that's re-rendered -->
-   Welcome to page: <span><%= PageInfo.pageTitle %></span>
+        independently of the following input tag.  Also, it hides a bug where the focus on an input tag is not restored after it's re-rendered -->
+   Page title: <span><%= PageInfo.pageTitle %></span>
       <i extends="editField">Edit page title: <input extends="inputTag" value=":=: PageInfo.pageTitle"/></i>
    <p/>
-   Site announcement <span class="announcement"><%= Announcement.message %></span>
-      <i extends="editField">Edit announcement: <input extends="inputTag" value=":=: Announcement.message"/></i>
+   Global message: <span class="announcement"><%= GlobalInfo.message %></span>
+      <i extends="editField">Edit message: <input extends="inputTag" value=":=: GlobalInfo.message"/></i>
    <p/>
-   Welcome: <span><%= UserSession.userName %></span>
+   User name: <span><%= UserSession.userName %></span>
       <i extends="editField">Edit userName: <input type="text" value=":=: UserSession.userName"/></i>
    <p/>
-   User page name: <span><%= PageUserInfo.userPageTitle %></span>
+   User page title: <span><%= PageUserInfo.userPageTitle %></span>
        <i extends="editField">Edit my name for this page: <input extends="inputTag" value=":=: PageUserInfo.userPageTitle"/></i>
    <p/>
    <span>Window visits <%= WindowSession.numWindowVisits %></span> (always '1')

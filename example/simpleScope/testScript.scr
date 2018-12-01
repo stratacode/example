@@ -3,11 +3,13 @@ cmd.includeSuper();
 pageLoader.loadPageAndWait("ScopeTest", "scopeTestPage"); 
 
 cmd.pauseTime = 250;
-// Announcement and UserSession classes are not defined in the JS runtime
-// so if we target 'js' we will get an error
+
+// GlobalInfo and UserSession classes are not defined in the JS runtime
+// If we target the 'js' runtime we will get an error in trying to run this command
+// By setting the targetRuntime, we the following commands only run on the server
 cmd.targetRuntime = "java_Server";
 
-Announcement {
+GlobalInfo {
    message = message.replace("are", "were");
 }
 
@@ -15,6 +17,9 @@ UserSession {
    userName = "Fanny Bumpkiss";
 }
 
+// In ScopeTest, we add ?scopeContextName=foo1 to the URL for one of the iframes.  This command waits for the server to receive a sync request
+// from that browser.  When it returns, the following commands have cmd.syncContextState set to that page's context.  So PageInfo will map to
+// the PageInfo for that page, WindowSession the window for that Page, and PageUserInfo the per-session user info for that user.
 cmd.waitForReady("foo1", pageLoader.waitForPageTime);
 
 PageInfo {
@@ -29,6 +34,11 @@ PageUserInfo {
    userPageTitle = "Fanny's foo";
 }
 
+ScopePageFoo {
+   pageLoader.savePage("ScopePageFoo", 1, serverTag ? pageLoader.getClientBodyHTML() : output_c().toString());
+   pageLoader.savePage("ScopePageFoo", 2, output().toString());
+}
+
 cmd.waitForReady("bar2", pageLoader.waitForPageTime);
 PageInfo {
    pageTitle = "A page named bar";
@@ -40,4 +50,9 @@ WindowSession {
 
 PageUserInfo {
    userPageTitle = "Fanny's bar";
+}
+
+ScopePageBar {
+   pageLoader.savePage("ScopePageBar", 1, serverTag ? pageLoader.getClientBodyHTML() : output_c().toString());
+   pageLoader.savePage("ScopePageBar", 2, output().toString());
 }

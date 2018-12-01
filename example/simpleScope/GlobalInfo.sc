@@ -1,5 +1,5 @@
 @Sync
 scope<global>
-object Announcement {
+object GlobalInfo {
    String message = "All your base are belong to us";
 }
