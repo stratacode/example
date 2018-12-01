@@ -1,9 +1,9 @@
 <html id="ScopeTest" refreshOnLoad="false">
    <body>
       <iframe abstract="true" id="pageFrame" style="width:45%;height:280px"></iframe>
-      <iframe extends="pageFrame" src="ScopePageFoo.html"></iframe>
-      <iframe extends="pageFrame" src="ScopePageFoo.html"></iframe>
-      <iframe extends="pageFrame" src="ScopePageBar.html"></iframe>
-      <iframe extends="pageFrame" src="ScopePageBar.html"></iframe>
+      <iframe extends="pageFrame" src='ScopePageFoo.html?scopeContextName=foo1'></iframe>
+      <iframe extends="pageFrame" src='ScopePageFoo.html?scopeContextName=foo2'></iframe>
+      <iframe extends="pageFrame" src='ScopePageBar.html?scopeContextName=bar1'></iframe>
+      <iframe extends="pageFrame" src='ScopePageBar.html?scopeContextName=bar2'></iframe>
    </body>
 </html>

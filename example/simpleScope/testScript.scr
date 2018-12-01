@@ -14,3 +14,30 @@ Announcement {
 UserSession {
    userName = "Fanny Bumpkiss";
 }
+
+cmd.waitForReady("foo1", pageLoader.waitForPageTime);
+
+PageInfo {
+   pageTitle = "A page named foo";
+}
+
+WindowSession {
+   windowName = "The original foo window";
+}
+
+PageUserInfo {
+   userPageTitle = "Fanny's foo";
+}
+
+cmd.waitForReady("bar2", pageLoader.waitForPageTime);
+PageInfo {
+   pageTitle = "A page named bar";
+}
+
+WindowSession {
+   windowName = "The second bar window";
+}
+
+PageUserInfo {
+   userPageTitle = "Fanny's bar";
+}
