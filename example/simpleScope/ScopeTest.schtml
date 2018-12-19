@@ -1,9 +1,12 @@
 <html id="ScopeTest" refreshOnLoad="false">
    <body>
       <iframe abstract="true" id="pageFrame" style="width:45%;height:280px"></iframe>
-      <iframe extends="pageFrame" src='ScopePageFoo.html?scopeContextName=foo1'></iframe>
-      <iframe extends="pageFrame" src='ScopePageFoo.html?scopeContextName=foo2'></iframe>
-      <iframe extends="pageFrame" src='ScopePageBar.html?scopeContextName=bar1'></iframe>
-      <iframe extends="pageFrame" src='ScopePageBar.html?scopeContextName=bar2'></iframe>
+      <!-- Adding the scopeContextName param in the iframe URLs so we can 'attach' to each scope from the test script (see testScript.scr) 
+           Adding windowId for consistency in the captured test page output.  Otherwise, the windowIds are assigned based on when requests are
+           received in a session.  Starting at 100 in case the session is used for other tests. -->
+      <iframe extends="pageFrame" src='ScopePageFoo.html?scopeContextName=foo1&windowId=100'></iframe>
+      <iframe extends="pageFrame" src='ScopePageFoo.html?scopeContextName=foo2&windowId=101'></iframe>
+      <iframe extends="pageFrame" src='ScopePageBar.html?scopeContextName=bar1&windowId=102'></iframe>
+      <iframe extends="pageFrame" src='ScopePageBar.html?scopeContextName=bar2&windowId=103'></iframe>
    </body>
 </html>

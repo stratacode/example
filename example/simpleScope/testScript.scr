@@ -35,7 +35,7 @@ PageUserInfo {
 }
 
 ScopePageFoo {
-   pageLoader.savePage("ScopePageFoo", 1, serverTag ? pageLoader.getClientBodyHTML() : output_c().toString());
+   pageLoader.savePage("ScopePageFoo", 1, serverTag ? pageLoader.getClientBodyHTML("foo1") : output_c().toString());
    pageLoader.savePage("ScopePageFoo", 2, output().toString());
 }
 
@@ -53,6 +53,6 @@ PageUserInfo {
 }
 
 ScopePageBar {
-   pageLoader.savePage("ScopePageBar", 1, serverTag ? pageLoader.getClientBodyHTML() : output_c().toString());
+   pageLoader.savePage("ScopePageBar", 1, serverTag ? pageLoader.getClientBodyHTML("bar2") : output_c().toString());
    pageLoader.savePage("ScopePageBar", 2, output().toString());
 }
