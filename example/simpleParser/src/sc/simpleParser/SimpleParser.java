@@ -97,6 +97,8 @@ public class SimpleParser {
       for (TypeDeclaration type:types) {
          JavaModel model = type.getJavaModel();
          boolean modelChanged = false;
+         // In case we've used the modelCache to deserialize this model from a previous parse, restore the parse node so we get more detail in the output of toDeclarationString()
+         model.restoreParseNode();
          if (doTypes) {
             if (toName == null) {
                System.out.println(type.toDeclarationString());
