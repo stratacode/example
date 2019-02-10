@@ -22,7 +22,7 @@ UserSession {
 // the PageInfo for that page, WindowSession the window for that Page, and PageUserInfo the per-session user info for that user.
 cmd.waitForReady("foo1", pageLoader.waitForPageTime);
 
-PageInfo {
+GlobalPageInfo {
    pageTitle = "A page named foo";
 }
 
@@ -40,7 +40,7 @@ ScopePageFoo {
 }
 
 cmd.waitForReady("bar2", pageLoader.waitForPageTime);
-PageInfo {
+GlobalPageInfo {
    pageTitle = "A page named bar";
 }
 

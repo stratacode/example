@@ -4,8 +4,8 @@
 
    <!-- Although the span wrapper tag around pageTitle is not necessary for HTML formatting, it allows the title to refresh
         independently of the following input tag.  Also, it hides a bug where the focus on an input tag is not restored after it's re-rendered -->
-   Page title: <span><%= PageInfo.pageTitle %></span>
-      <i extends="editField">Edit page title: <input extends="inputTag" value=":=: PageInfo.pageTitle"/></i>
+   Page title: <span><%= GlobalPageInfo.pageTitle %></span>
+      <i extends="editField">Edit page title: <input extends="inputTag" value=":=: GlobalPageInfo.pageTitle"/></i>
    <p/>
    Global message: <span class="announcement"><%= GlobalInfo.message %></span>
       <i extends="editField">Edit message: <input extends="inputTag" value=":=: GlobalInfo.message"/></i>

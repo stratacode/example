@@ -3,7 +3,7 @@
 <html>
 <body>
    <form id="helloForm" onSubmit="return false;">
-      <input id="messageInput" type="text" value=":=: message" size="45">
+      <input id="messageInput" type="text" value=":=: message" size="45"/>
       <div><%= reply %></div>
    </form>
 </body>

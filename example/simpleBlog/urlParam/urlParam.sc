@@ -1,2 +1,2 @@
-public example.simpleBlog.urlParam extends model, html.schtml, jetty.schtml {
+public example.simpleBlog.urlParam extends model, html.schtml {
 }
