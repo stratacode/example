@@ -11,4 +11,4 @@ UnitConverter {
    pageLoader.savePage("UnitConverter", 2, output().toString());
 }
 
-pageLoader.saveClientConsole(pageLoader.findUrlPath("UnitConverter"));
+pageLoader.saveClientConsole(pageLoader.findUrlPath("UnitConverter"), "ucPage");
