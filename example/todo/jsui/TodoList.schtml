@@ -9,12 +9,15 @@
      <div class="appFrame" id="appFrame">
         <h2>Todo List</h2>
         <div id="todoControl">
-           <!-- The following span tag's body contains two method calls getRemaining and getSize that are updated automatically from change events using data binding.
-                The getSize call simply detects change events when the 'todos' list is modified.  But getRemaining
-                needs to run also after any change to a TodoItem's 'complete' status.  To handle that event with no additional code we have set 'refreshBindings=true'
-                on this page to revalidate all bindings in a 'do later' event after any user input. -->
+           <!-- This span tag's body depends on two method calls: getRemaining and getSize that are updated
+                automatically from change events using data binding. Both calls automatically receives change
+                events when 'todos' changes. But getRemaining also needs to run when TodoItem.complete changes.
+                We could listen for that change on each item and send a change for todos but instead just set
+                'refreshBindings' to true for this page. After any change, all bindings are validated and
+                refreshed if inputs have changed. -->
            <span><%= getRemaining(todos) %> of <%= getSize(todos) %> to do</span>
-           <!-- The clickEvent property is updated when the anchor tag is clicked on.  When that happens the binding calls: 'removeComplete()' -->
+           <!-- The clickEvent property is updated when the anchor tag is clicked on.  When that happens the
+                 binding calls: 'removeComplete()' -->
            [ <a href="#" clickEvent="=: removeComplete()">remove completed</a> ]
            <ul>
               <!-- Repeat the li tag once for each element in the todos list.
