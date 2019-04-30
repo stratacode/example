@@ -1,0 +1,40 @@
+<html>
+<body style="width: 500px; height:500px; border: solid 1 #000">
+<div id="toMove" 
+     style=':= "position:absolute; top: " + curY + "px; left: " + curX + "px; width:200px; height: 40px; background: #a8c"'
+     mouseDownMoveUp="=: mouseEvent(mouseDownMoveUp)">
+   <%!
+      int curX = 0, curY = 0;
+      int pressX, pressY;
+      boolean pressed = false;
+      void mouseEvent(MouseEvent ev) {
+         if (ev.type.equals("mousedown")) {
+            pressX = ev.clientX;
+            pressY = ev.clientY;
+            pressed = true;
+            System.out.println("*** Pressed at: " + pressX + "," + pressY);
+         }
+         else if (ev.type.equals("mousemove")) {
+            moveTo(ev);
+         }
+         else if (ev.type.equals("mouseup")) {
+            moveTo(ev);
+            pressed = false;
+         }
+      }
+
+      void moveTo(MouseEvent e) {
+         int dx = (e.clientX - pressX);
+         int dy = (e.clientY - pressY);
+         curX = curX + dx;
+         curY = curY + dy;
+
+         pressX = pressX + dx;
+         pressY = pressY + dy;
+         System.out.println("*** Moved to  " + curX + "," + curY);
+      }
+   %>
+   click and drag
+</div>
+</body>
+</html>

@@ -1,2 +1,2 @@
-example.twoLayer.baseLayer {
+public example.twoLayer.baseLayer {
 }

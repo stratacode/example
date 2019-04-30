@@ -1,5 +1,6 @@
-// This runs on the server - it could be a database query or secure logic you do not want
-// to expose on the client.
 HelloWorld {
+   // When the message changes, set the reply property.
+   // Use server-only bindings like this for database queries or other logic
+   // that should not run on the client.
    reply := "Server says: " + message;
 }

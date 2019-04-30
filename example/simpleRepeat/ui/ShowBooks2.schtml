@@ -26,7 +26,7 @@
                                       new Author("William Gibson", new Book[] {new Book("Neuromancer")})};
    %>
    <body>
-      <!-- Shows that 'dl' by default has wrap=true.  Only the body of the 'dl' tag is repeated. -->
+      <!-- Set 'repeat' on dl to repeat only the body. By default, dl uses 'wrap=true' because it's a list container -->
       <dl id="showAuthors" repeat="= authors" repeatVarName="author">
          <dt><%= author.name %>:</dt>
          <dd>

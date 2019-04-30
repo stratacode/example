@@ -1,6 +1,6 @@
 <!-- TodoList.schtml modifies the TodoList class in the previous model layer.
-     Setting 'refreshBindings' here because the 'getRemaining' method needs to be
-     refreshed after any changes to the page are made. -->
+     Setting 'refreshBindings' here for the 'getRemaining' method which
+     can't automatically detect changes to the 'completed' property. -->
 <html refreshBindings="true">
    <head>
       <link rel="stylesheet" type="text/css" href="todoStyle.css" />
@@ -9,12 +9,6 @@
      <div class="appFrame" id="appFrame">
         <h2>Todo List</h2>
         <div id="todoControl">
-           <!-- This span tag's body depends on two method calls: getRemaining and getSize that are updated
-                automatically from change events using data binding. Both calls automatically receives change
-                events when 'todos' changes. But getRemaining also needs to run when TodoItem.complete changes.
-                We could listen for that change on each item and send a change for todos but instead just set
-                'refreshBindings' to true for this page. After any change, all bindings are validated and
-                refreshed if inputs have changed. -->
            <span><%= getRemaining(todos) %> of <%= getSize(todos) %> to do</span>
            <!-- The clickEvent property is updated when the anchor tag is clicked on.  When that happens the
                  binding calls: 'removeComplete()' -->

@@ -1,9 +1,10 @@
 package sc.example.unitConverter;
 
+// Use this as the JS prefix for classes instead of "sc_example_unitConverter"
 @sc.js.JSSettings(prefixAlias="scex_")
-// With server
+// Runs two separate applications the server (jetty.shtml) 
+// and the browser (js.schtml) with synchronization between the
+// two enabled (js.sync).
 example.unitConverter.html.clientServer extends example.unitConverter.html.core, jetty.schtml, js.schtml, js.sync {
-// Without server
-//unitConverter.jsui extends js.schtml, coreui {
    codeType = sc.layer.CodeType.UI;
 }

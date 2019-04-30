@@ -1,1 +1,1 @@
-example.twoLayer.subLayer extends baseLayer {}
+public example.twoLayer.subLayer extends baseLayer {}

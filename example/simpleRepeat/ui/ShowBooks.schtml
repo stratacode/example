@@ -26,7 +26,7 @@
                                       new Author("William Gibson", new Book[] {new Book("Neuromancer")})};
    %>
    <body>
-      <!-- A 'repeat' on a div tag will repeat the div tag and it's contents.  Use 'wrap=true' to repeat just the contents. -->
+      <!-- Set 'repeat' on a div tag to repeat the div and it's contents using wrap=false - the default for repeat on a 'div' -->
       <div id="showAuthors" repeat="= authors" repeatVarName="author">
          <span><%= author.name %></span>
          <ul>

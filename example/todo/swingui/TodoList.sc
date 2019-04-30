@@ -30,8 +30,12 @@ TodoList extends AppFrame {
          this.ix = ix;
       }
 
-      @sc.bind.NoBindWarn
-      double startTodoY := prev == null ? startListY : prev.location.y + prev.size.height + ypad;
+      double startTodoY;
+
+      public void setIx(int ix) {
+         this.ix = ix;
+         startTodoY = ix == 0 ? startListY : todoList.repeatComponents.get(ix-1).startTodoY + todoTextLabel.size.height + ypad;
+      }
 
       object completeCheckBox extends JCheckBox {
          selected :=: todo.complete;
@@ -49,17 +53,6 @@ TodoList extends AppFrame {
          size := preferredSize;
          enabled := !todo.complete;
       }
-
-      // Returns the previous component in the todo list
-      java.awt.Component getPrev() {
-         if (ix == 0)
-            return null;
-         else {
-            TodoComponent comp = todoList.repeatComponents.get(ix - 1);
-            return comp.lastComponent;
-         }
-      }
-
    }
 
    object todoList extends RepeatComponent<TodoComponent> {
@@ -69,8 +62,18 @@ TodoList extends AppFrame {
 
       parentComponent = TodoList.this;
 
+      // This will be called once for each todoItem when the RepeatComponent refreshes itself
       public TodoComponent createRepeatElement(Object todo, int ix, Object oldComp) {
          return new TodoComponent((TodoItem)todo, ix);
+      }
+
+      // Called to find the original repeat value given the component created above
+      public Object getRepeatVar(TodoComponent todoComp) {
+         return todoComp.todo;
+      }
+
+      public void setRepeatIndex(TodoComponent todoComp, int ix) {
+         todoComp.ix = ix;
       }
 
       boolean refreshList() {
