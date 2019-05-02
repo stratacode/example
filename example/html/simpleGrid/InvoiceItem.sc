@@ -6,13 +6,15 @@ class InvoiceItem {
    String productId;
    int quantity;
    BigDecimal listPrice;
-   BigDecimal discountPrice;
+   BigDecimal discountPercent;
+   BigDecimal discountPrice := listPrice.subtract(discountPercent.multiply(listPrice));
+   BigDecimal totalPrice := discountPrice.multiply(new BigDecimal(quantity));
 
-   InvoiceItem(String description,String productId, int quantity, BigDecimal listPrice, BigDecimal discountPrice) {
+   InvoiceItem(String description,String productId, int quantity, BigDecimal listPrice, BigDecimal discountPercent) {
       this.description = description;
       this.productId = productId;
       this.quantity = quantity;
       this.listPrice = listPrice;
-      this.discountPrice = discountPrice;
+      this.discountPercent = discountPercent;
    }
 }

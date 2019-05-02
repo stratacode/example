@@ -3,8 +3,8 @@
 <html>
    <%!
       ArrayList<InvoiceItem> gridItems = {
-         new InvoiceItem("foo", "id-0", 42, new BigDecimal("1.23"), new BigDecimal("0.99")),
-         new InvoiceItem("bar", "id-1", 66, new BigDecimal("2.46"), new BigDecimal("2.25"))
+         new InvoiceItem("foo", "id-0", 42, new BigDecimal("1.23"), new BigDecimal("0.05")),
+         new InvoiceItem("bar", "id-1", 66, new BigDecimal("2.46"), new BigDecimal("0.10"))
       };
       // DynUtil findType and getPropertyNames will work for both dynamic and compiled modes, on the server and in the browser
       String[] colNames = DynUtil.getPropertyNames(DynUtil.findType("sc.example.simpleGrid.InvoiceItem"));
