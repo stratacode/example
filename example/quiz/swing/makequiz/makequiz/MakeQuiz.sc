@@ -36,7 +36,7 @@ public class MakeQuiz extends AppFrame {
 
       // A split pane with the quiz list on the left side, and the
       // question list on the right
-      object innerSplitPane extends JSplitPane {
+   object innerSplitPane extends JSplitPane {
 	 topComponent = quizListPanel;
 	 bottomComponent = questionListPanel;
 	 orientation = VERTICAL_SPLIT;

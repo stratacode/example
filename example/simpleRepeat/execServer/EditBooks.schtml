@@ -1,7 +1,3 @@
-<%@
-   import java.util.Arrays;
-   import sc.obj.ManualGetSet;
-%>
 <html>
    <body>
       <div id="appFrame" exec="server"/>

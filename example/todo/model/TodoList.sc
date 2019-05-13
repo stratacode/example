@@ -5,6 +5,8 @@ class TodoList {
       String text;
       boolean complete;
 
+      // Use ManualGetSet so we do not send unnecessary change events from the constructor
+      @sc.obj.ManualGetSet
       TodoItem(String t, boolean c) {
           text = t;
           complete = c;

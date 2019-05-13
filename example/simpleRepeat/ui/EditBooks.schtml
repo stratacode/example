@@ -1,10 +1,13 @@
 <%@
    import java.util.Arrays;
    import sc.obj.ManualGetSet;
+   import sc.obj.Sync;
+   import sc.obj.IObjectId;
 %>
 <html>
    <%!
-      class Author {
+      @Sync
+      class Author implements IObjectId {
          String name;
          List<Book> books = new ArrayList<Book>();
 
@@ -16,23 +19,36 @@
                   book.author = this;
             }
          }
+
+         public String getObjectId() {
+            return name.replace(" ", "_");
+         }
       }
 
-      class Book {
+      @Sync
+      class Book implements IObjectId {
          String title;
          Author author;
 
          Book(String title) {
             this.title = title;
          }
+
+         String getObjectId() {
+            return title.replace(" ", "_");
+         }
       }
 
+      @Sync
       ArrayList<Author> authors = new ArrayList<Author>(Arrays.asList(
            new Author[]{new Author("Isaac Asimov", new Book[] {new Book("I Robot"), new Book("Foundation")}),
                         new Author("Octavia Butler", new Book[] {new Book("Adulthood Rites")}),
                         new Author("William Gibson", new Book[] {new Book("Neuromancer")})}));
 
+      @Sync
       Author currentAuthor;
+
+      @Sync
       Book currentBook;
 
       void changeCurrentAuthor(Author author) {
@@ -61,7 +77,7 @@
    %>
    <body>
       <div id="appFrame">
-         <dl id="showAuthors" repeat="= authors" repeatVarName="author">
+         <dl id="showAuthors" repeat=":= authors" repeatVarName="author">
             <dt id="authorName" clickEvent="=: changeCurrentAuthor(author)" class=':= currentAuthor == author ? "selected" : ""'><%= author.name %>:</dt>
             <dd>
                <span id="showBooks" repeat=":= author.books" repeatVarName="book" clickEvent="=: changeCurrentBook(book)" class=':= currentBook == book ? "selected" : ""'>

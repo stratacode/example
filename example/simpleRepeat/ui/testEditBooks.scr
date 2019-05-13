@@ -1,0 +1,25 @@
+cmd.pauseTime = 500;
+
+cmd.sleep(3000);
+
+// When authors is sync'd need to restrict the 'add' to just the server
+// or we get a duplicate because the command is run on both runtimes.
+cmd.targetRuntime = "java_Server";
+
+EditBooks {
+   authors.add(new Author("Verner Vinge", new Book[] {new Book("A Fire Upon The Deep"), new Book("A Deepness in the Sky")}));
+
+   //cmd.targetRuntime = null;
+
+   body {
+      appFrame {
+         {
+            Object[] authorTags = showAuthors_WrapRepeat.getObjChildren(false);
+            for (int i = 0; i < authorTags.length; i++) {
+               showAuthors_WrapRepeat.showAuthors authorTag = (showAuthors_WrapRepeat.showAuthors) authorTags[i];
+               authorTag.authorName.click();
+            }
+         }
+      }
+   }
+}

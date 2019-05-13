@@ -1,4 +1,6 @@
 cmd.pauseTime = 250;
+
+//cmd.sleep(3000);
 //cmd.edit = false;
 
 TodoList {

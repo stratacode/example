@@ -1,11 +1,27 @@
 <%@
+   import sc.bind.BindingDirection;
 %>
 <html>
    <%!
       ArrayList<InvoiceItem> gridItems = {
          new InvoiceItem("foo", "id-0", 42, new BigDecimal("1.23"), new BigDecimal("0.05")),
-         new InvoiceItem("bar", "id-1", 66, new BigDecimal("2.46"), new BigDecimal("0.10"))
+         new InvoiceItem("bar", "id-1", 66, new BigDecimal("2.46"), new BigDecimal("0.10")),
+         new InvoiceItem("baz", "id-2", 33, new BigDecimal("4.92"), new BigDecimal("0.15"))
       };
+      int nextId = 3;
+      int counter = 0;
+      void addRow() {
+         InvoiceItem newItem = gridItems.get(counter).copy();
+         newItem.description = gridItems.get(counter % 3).description + nextId;
+         newItem.productId = "id-" + nextId++;
+         counter++;
+         gridItems.add(newItem);
+      }
+      void incrDiscount() {
+         for (InvoiceItem gridItem:gridItems) {
+            gridItem.discountPercent = gridItem.discountPercent.add(new BigDecimal("0.01"));
+         }
+      }
       // DynUtil findType and getPropertyNames will work for both dynamic and compiled modes, on the server and in the browser
       String[] colNames = DynUtil.getPropertyNames(DynUtil.findType("sc.example.simpleGrid.InvoiceItem"));
    %>
@@ -13,7 +29,7 @@
       #hdrRow span {
          border-top: 1px solid #000;
       }
-      .startCell {
+      .startRow {
          border-left: 1px solid #000;
       }
       #hdrRow, .row {
@@ -32,17 +48,21 @@
    </style>
    <body>
       <div id="appFrame">
+         <input type="button" value="Add row" clickEvent="=: addRow()"/>
+         <input type="button" value="Incr discount" clickEvent="=: incrDiscount()"/>
+         <p/>
          <div id="grid">
             <div id="hdrRow">
-               <span>index</span>
+               <span class="startRow">index</span>
                <span id="hdrCell" repeat="= colNames" repeatVarName="colName">
                   <%= colName %>
                </span>
             </div>
             <div id="row" class="row" repeat="= gridItems" repeatVarName="item">
-               <span><%= row.this.repeatIndex %></span>
+               <span class="startRow"><%= row.this.repeatIndex %></span>
                <span id="cell" repeat="= colNames" repeatVarName="colName">
-                  <%= DynUtil.getPropertyValue(item, colName) %>
+                  <%! Object cellVal = Bind.bind(this, "cellVal", item, new Object[] {colName}, BindingDirection.FORWARD, 0, null); %>
+                  <%= cellVal %>
                </span>
             </div>
          </div>
