@@ -1,16 +1,19 @@
+cmd.include("testInit.scr");
+
+pageLoader.loadPageAndWait("TodoList", "testClientScript");
+
 cmd.pauseTime = 250;
 
 //cmd.sleep(3000);
 //cmd.edit = false;
 
-// Run these commands in the java process - they will be sync'd to the client
-cmd.targetRuntime = "java";
+// Run these commands on the client 
+cmd.targetRuntime = "js";
 
 TodoList {
    todos.size(); 
    assert todos.size() == 3 : "No todos";
    todos.get(1).complete = true;
-   //cmd.targetRuntime = "js";
 
    todoText = "A new entry";
    addTodoEntry();
