@@ -1,2 +1,3 @@
 cmd.includeSuper();
+// Disable the default behavior that goes through and loads each page.  Instead testScript.scr will open the one page we want.
 pageLoader.loadAllPages = false;
