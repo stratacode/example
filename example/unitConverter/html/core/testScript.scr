@@ -7,8 +7,8 @@ cmd.include("testUC.scr");
 UnitConverter {
    // client's output
    if (cmd.syncEnabled)
-      pageLoader.savePage("UnitConverter", 1, output_c().toString());
-   pageLoader.savePage("UnitConverter", 2, output().toString());
+      pageLoader.savePage("UnitConverter", output_c().toString());
+   pageLoader.savePage("UnitConverter", output().toString());
 }
 
 pageLoader.saveClientConsole(pageLoader.findUrlPath("UnitConverter"), "ucPage");

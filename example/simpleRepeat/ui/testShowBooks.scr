@@ -1,4 +1,6 @@
 cmd.pauseTime = 500;
+// Need to target both server and client since authors is not synchronized
+cmd.targetRuntime = null;
 
 ShowBooks {
    authors[0].name = authors[0].name + " - foundational";

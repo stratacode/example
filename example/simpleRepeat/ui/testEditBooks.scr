@@ -17,9 +17,59 @@ EditBooks {
             Object[] authorTags = showAuthors_WrapRepeat.getObjChildren(false);
             for (int i = 0; i < authorTags.length; i++) {
                showAuthors_WrapRepeat.showAuthors authorTag = (showAuthors_WrapRepeat.showAuthors) authorTags[i];
+
                authorTag.authorName.click();
+
+               String newBook = null;
+               switch (i) {
+                  case 0:
+                     newBook = "Second Foundation";
+                     break;
+                  case 1:
+                     newBook = "Imago";
+                     break;
+                  case 2:
+                     newBook = "Idoru";
+                     break;
+                  case 3:
+                     newBook = "Rainbow's End";
+                     break;
+               }
+               if (newBook != null) {
+                  if (!newBookTitle.serverTag)
+                     cmd.targetRuntime = "js"; // Because newBookTitle.value is not synchronized, need to set this on the client
+                  newBookTitle.value = newBook;
+                  if (!newBookTitle.serverTag)
+                     cmd.targetRuntime = "java_Server";
+                  addBookButton.click();
+               }
+            }
+            for (int i = 0; i < authorTags.length; i++) {
+               showAuthors_WrapRepeat.showAuthors authorTag = (showAuthors_WrapRepeat.showAuthors) authorTags[i];
+               authorTag.authorName.click();
+               Object[] bookTags = authorTag.books.booksList_Repeat.getObjChildren(false);
+               for (int j = 0; j < bookTags.length; j++) {
+                  showAuthors_WrapRepeat.showAuthors.books.booksList_Repeat.booksList bookTag =
+                      (showAuthors_WrapRepeat.showAuthors.books.booksList_Repeat.booksList) bookTags[j];
+                  bookTag.click();
+               }
+            }
+            cmd.sleep(2000);
+            // Remove the first book in each list
+            for (int i = 0; i < authorTags.length; i++) {
+               showAuthors_WrapRepeat.showAuthors authorTag = (showAuthors_WrapRepeat.showAuthors) authorTags[i];
+               authorTag.authorName.click();
+               Object[] bookTags = authorTag.books.booksList_Repeat.getObjChildren(false);
+               if (bookTags.length > 0) {
+                  showAuthors_WrapRepeat.showAuthors.books.booksList_Repeat.booksList bookTag =
+                      (showAuthors_WrapRepeat.showAuthors.books.booksList_Repeat.booksList) bookTags[0];
+                  bookTag.click();
+                  removeBookButton.click();
+               }
             }
          }
       }
    }
 }
+
+cmd.targetRuntime = null;

@@ -5,9 +5,9 @@ class Blog {
    String blogName;
    String blogDesc;
 
-   static List<Blog> blogs = { scNewsBlog, scDevBlog };
+   static ArrayList<Blog> blogs = { scNewsBlog, scDevBlog };
 
-   List<Post> posts;
+   ArrayList<Post> posts;
 
    static Blog getBlog(Integer blogId) {
       if (blogId == null)
@@ -28,5 +28,14 @@ class Blog {
             return post;
       }
       return null;
+   }
+
+   @sc.obj.EditorCreate(constructorParamNames="blogId")
+   static Blog newBlog(int blogId) {
+      Blog newBlog = new Blog();
+      newBlog.blogId = blogId;
+      newBlog.posts = new ArrayList<Post>();
+      blogs.add(newBlog);
+      return newBlog;
    }
 }

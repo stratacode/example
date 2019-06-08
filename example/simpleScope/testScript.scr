@@ -35,8 +35,8 @@ PageUserInfo {
 }
 
 ScopePageFoo {
-   pageLoader.savePage("ScopePageFoo", 1, serverTag ? pageLoader.getClientBodyHTML("foo1") : output_c().toString());
-   pageLoader.savePage("ScopePageFoo", 2, output().toString());
+   pageLoader.savePage("ScopePageFoo", serverTag ? pageLoader.getClientBodyHTML("foo1") : output_c().toString());
+   pageLoader.savePage("ScopePageFoo", output().toString());
 }
 
 cmd.waitForReady("bar2", pageLoader.waitForPageTime);
@@ -53,6 +53,6 @@ PageUserInfo {
 }
 
 ScopePageBar {
-   pageLoader.savePage("ScopePageBar", 1, serverTag ? pageLoader.getClientBodyHTML("bar2") : output_c().toString());
-   pageLoader.savePage("ScopePageBar", 2, output().toString());
+   pageLoader.savePage("ScopePageBar", serverTag ? pageLoader.getClientBodyHTML("bar2") : output_c().toString());
+   pageLoader.savePage("ScopePageBar", output().toString());
 }

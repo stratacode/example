@@ -62,9 +62,10 @@ RemoteMethod {
    }
 
    // client's output - if it's a server tag, there's no RemoteMethod object.  Either way we can use the pageLoader for just eval'ing a script but keeping output_c() as a test of @Exec(clientOnly=true) and the serverTag property
-   pageLoader.savePage("RemoteMethod", 1, serverTag ? pageLoader.getClientBodyHTML("remoteMethodPage") : output_c().toString());
+   pageLoader.savePage("RemoteMethod", serverTag ? pageLoader.getClientBodyHTML("remoteMethodPage") : output_c().toString());
 }
 
 // server's output
 StringBuilder pageOutput = RemoteMethod.output();
-pageLoader.savePage("RemoteMethod", 2, pageOutput.toString());
+pageLoader.savePage("RemoteMethod", pageOutput.toString());
+

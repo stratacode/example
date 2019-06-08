@@ -7,5 +7,5 @@ import java.util.List;
 
 import sc.html.QueryParam;
 
-public example.simpleBlog.model {
+public example.simpleBlog.model extends util {
 }

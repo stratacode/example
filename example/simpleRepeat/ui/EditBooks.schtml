@@ -79,26 +79,26 @@
       <div id="appFrame">
          <dl id="showAuthors" repeat=":= authors" repeatVarName="author">
             <dt id="authorName" clickEvent="=: changeCurrentAuthor(author)" class=':= currentAuthor == author ? "selected" : ""'><%= author.name %>:</dt>
-            <dd>
-               <span id="showBooks" repeat=":= author.books" repeatVarName="book" clickEvent="=: changeCurrentBook(book)" class=':= currentBook == book ? "selected" : ""'>
+            <dd id="books">
+               <span id="booksList" repeat=":= author.books" repeatVarName="book" clickEvent="=: changeCurrentBook(book)" class=':= currentBook == book ? "selected" : ""'>
                   <%= book.title + (repeatIndex == author.books.size()-1 ? "" : ",") %>
                </span>
             </dd>
          </dl>
          Title: <input type="text" id="newBookTitle"/>
-                <input type="button" value="Add book"
+                <input type="button" id="addBookButton" value="Add book"
                        clickEvent="=: addBook(new Book(newBookTitle.value))"
                        clickEvent='=: newBookTitle.value = ""'
                        disabled=":= currentAuthor == null || TextUtil.length(newBookTitle.value) == 0"/>
          <p/>
          Name: <input type="text" id="newAuthorName"/>
-               <input type="button" value="Add author"
+               <input type="button" id="addAuthorButton" value="Add author"
                       clickEvent="=: authors.add(new Author(newAuthorName.value, null))"
                       clickEvent='=: newAuthorName.value = ""'
                       disabled=":= TextUtil.length(newAuthorName.value) == 0"/>
          <p/>
-         <input type="button" value="Remove author" clickEvent="=: removeAuthor()" disabled=":= currentAuthor == null"/>
-         <input type="button" value="Remove book" clickEvent="=: removeBook()" disabled=":= currentBook == null"/>
+         <input type="button" id="removeAuthorButton" value="Remove author" clickEvent="=: removeAuthor()" disabled=":= currentAuthor == null"/>
+         <input type="button" id="removeBookButton" value="Remove book" clickEvent="=: removeBook()" disabled=":= currentBook == null"/>
       </div>
    </body>
    <style>
