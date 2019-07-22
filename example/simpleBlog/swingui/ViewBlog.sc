@@ -12,7 +12,7 @@ object ViewBlog extends AppFrame {
    int blogId;
    String postShortName;
 
-   Blog blog := Blog.getBlog(blogId);
+   Blog blog := BlogManager.getBlog(blogId);
    Post post := blog == null ? null : blog.getPost(postShortName);
 
    double startRow1Y = ypad + baseline;
@@ -51,7 +51,7 @@ object ViewBlog extends AppFrame {
    }
 
    object blogHeaderList extends RepeatComponent<BlogHeader> {
-      repeat := Blog.blogs;
+      repeat := BlogManager.blogs;
 
       double height = ypad;
 

@@ -12,10 +12,16 @@
    <body>
       <div class="appFrame" id="appFrame">
          <span id="blogList" repeat=":= BlogManager.blogs" repeatVarName="curBlog">
-            <a href='= pageBaseURL + "?blogId=" + curBlog.blogId' class=':= blog == curBlog ? "currentBlogLink" : "blogLink"'><%= curBlog.blogName %></a>
+            <a   clickCount="=: blog = BlogManager.getBlog(curBlog.blogId)" 
+                 class=':= blog == curBlog ? "currentBlogLink" : "blogLink"'>
+               <%= curBlog.blogName %>
+            </a>
          </span>
          <div visible=":= blog != null" id="postList" repeat=":= blog.posts" repeatVarName="curPost">
-            <a href='= pageBaseURL + "?blogId=" + blog.blogId + "&post=" + curPost.shortName' class=':= post == curPost ? "currentPostLink" : "postLink"'><%= curPost.title %></a>
+            <a   clickCount="=: post = (blog == null ? null : blog.getPost(curPost.shortName))" 
+                 class=':= post == curPost ? "currentPostLink" : "postLink"'>
+               <%= curPost.title %>
+            </a>
          </div>
          <div id="blogDesc" visible=":= blog != null">
             <%= blog.blogDesc %>

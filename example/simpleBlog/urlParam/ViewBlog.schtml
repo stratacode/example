@@ -5,12 +5,12 @@
       int blogId;
       String postShortName;
 
-      Blog blog := Blog.getBlog(blogId);
+      Blog blog := BlogManager.getBlog(blogId);
       Post post := blog == null ? null : blog.getPost(postShortName);
    %>
    <body>
       <div class="appFrame" id="appFrame">
-         <span id="blogList" repeat=":= Blog.blogs" repeatVarName="curBlog">
+         <span id="blogList" repeat=":= BlogManager.blogs" repeatVarName="curBlog">
             <a href='= "/blog/" + curBlog.blogId + "/"' class=':= blog == curBlog ? "currentBlogLink" : "blogLink"'><%= curBlog.blogName %></a>
          </span>
          <div id="blogDisplayWrapper">
