@@ -7,16 +7,28 @@
 
       Blog blog := BlogManager.findBlog(blogId);
       Post post := blog == null ? null : blog.getPost(postShortName);
+
+      void switchToBlog(int newBlogId) {
+         blog = BlogManager.findBlog(newBlogId);
+         this.blogId = newBlogId;
+         this.postShortName = null;
+      }
+
+      void switchToPost(String shortName) {
+         post = blog == null ? null : blog.getPost(shortName);
+         postShortName = shortName;
+      }
    %>
    <body>
       <div class="appFrame" id="appFrame">
          <span id="blogList" repeat=":= BlogManager.blogs" repeatVarName="curBlog">
-            <a href='= "/blog/" + curBlog.blogId + "/"' class=':= blog == curBlog ? "currentBlogLink" : "blogLink"'><%= curBlog.blogName %></a>
+            <a clickCount="=: switchToBlog(curBlog.blogId)" class=':= blog == curBlog ? "currentBlogLink" : "blogLink"'><%= curBlog.blogName %></a>
          </span>
          <div id="blogDisplayWrapper">
             <div id="blogDisplay" visible=":= blog != null">
                <div id="postList" repeat=":= blog.posts" repeatVarName="curPost">
-                  <a href='= "/blog/" + blog.blogId + "/" + curPost.shortName + "/"' class=':= post == curPost ? "currentPostLink" : "postLink"'><%= curPost.title %></a>
+                  <a clickCount="=: switchToPost(curPost.shortName)"
+                     class=':= post == curPost ? "currentPostLink" : "postLink"'><%= curPost.title %></a>
                </div>
                <div id="blogDesc">
                   <%= blog.blogDesc %>

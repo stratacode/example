@@ -6,7 +6,7 @@
       @QueryParam(name="post")
       String postShortName;
 
-      Blog blog := BlogManager.getBlog(blogId);
+      Blog blog := BlogManager.findBlog(blogId);
       Post post := blog == null ? null : blog.getPost(postShortName);
    %>
    <body>

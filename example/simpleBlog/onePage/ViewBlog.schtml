@@ -6,19 +6,30 @@
       @QueryParam(name="post")
       String postShortName;
 
-      Blog blog := BlogManager.getBlog(blogId);
+      Blog blog := BlogManager.findBlog(blogId);
       Post post := blog == null ? null : blog.getPost(postShortName);
+
+      void switchToBlog(int newBlogId) {
+         blog = BlogManager.findBlog(newBlogId);
+         this.blogId = newBlogId;
+         this.postShortName = null;
+      }
+
+      void switchToPost(String shortName) {
+         post = blog == null ? null : blog.getPost(shortName);
+         postShortName = shortName;
+      }
    %>
    <body>
       <div class="appFrame" id="appFrame">
          <span id="blogList" repeat=":= BlogManager.blogs" repeatVarName="curBlog">
-            <a   clickCount="=: blog = BlogManager.getBlog(curBlog.blogId)" 
+            <a   clickCount="=: switchToBlog(curBlog.blogId)"
                  class=':= blog == curBlog ? "currentBlogLink" : "blogLink"'>
                <%= curBlog.blogName %>
             </a>
          </span>
          <div visible=":= blog != null" id="postList" repeat=":= blog.posts" repeatVarName="curPost">
-            <a   clickCount="=: post = (blog == null ? null : blog.getPost(curPost.shortName))" 
+            <a   clickCount="=: switchToPost(curPost.shortName)"
                  class=':= post == curPost ? "currentPostLink" : "postLink"'>
                <%= curPost.title %>
             </a>

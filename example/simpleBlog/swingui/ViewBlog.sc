@@ -12,7 +12,7 @@ object ViewBlog extends AppFrame {
    int blogId;
    String postShortName;
 
-   Blog blog := BlogManager.getBlog(blogId);
+   Blog blog := BlogManager.findBlog(blogId);
    Post post := blog == null ? null : blog.getPost(postShortName);
 
    double startRow1Y = ypad + baseline;
@@ -157,8 +157,6 @@ object ViewBlog extends AppFrame {
          }
 
          public void setParentComponent(java.awt.Component component) {
-            if (component == null)
-               System.out.println("***");
             super.setParentComponent(component);
          }
       }

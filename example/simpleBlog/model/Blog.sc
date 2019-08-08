@@ -1,6 +1,8 @@
 
 @Component
 @sc.obj.Sync
+@CompilerSettings(constructorProperties="blogId")
+@sc.obj.EditorCreate
 class Blog {
    int blogId;
    String blogName;
@@ -19,6 +21,13 @@ class Blog {
       return null;
    }
 
+   void init() {
+      if (posts == null)
+         posts = new ArrayList<Post>();
+      BlogManager.addBlog(this);
+   }
+
+   /*
    @sc.obj.EditorCreate(constructorParamNames="blogId")
    static Blog createBlog(int blogId) {
       Blog newBlog = new Blog();
@@ -27,4 +36,5 @@ class Blog {
       BlogManager.addBlog(newBlog);
       return newBlog;
    }
+   */
 }
