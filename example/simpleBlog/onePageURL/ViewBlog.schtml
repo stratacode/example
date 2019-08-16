@@ -9,29 +9,30 @@
       Post post := blog == null ? null : blog.getPost(postShortName);
 
       void switchToBlog(int newBlogId) {
-         blog = BlogManager.findBlog(newBlogId);
          this.blogId = newBlogId;
          this.postShortName = null;
       }
 
       void switchToPost(String shortName) {
-         post = blog == null ? null : blog.getPost(shortName);
          postShortName = shortName;
       }
    %>
    <body>
       <div class="appFrame" id="appFrame">
-         <span id="blogList" repeat=":= BlogManager.blogs" repeatVarName="curBlog">
-            <a clickCount="=: switchToBlog(curBlog.blogId)" class=':= blog == curBlog ? "currentBlogLink" : "blogLink"'><%= curBlog.blogName %></a>
-         </span>
+         <div class="titleText">All blogs:</div>
+         <div id="blogList" repeat=":= BlogManager.blogs" repeatVarName="curBlog" class="blogIndent">
+            <a clickCount="=: switchToBlog(curBlog.blogId)" class=':= blog == curBlog ? "currentLink" : "normalLink"'><%= curBlog.blogName %></a>
+         </div>
          <div id="blogDisplayWrapper">
             <div id="blogDisplay" visible=":= blog != null">
+               <div id="blogDesc">
+                  <div><span class="titleText">Current blog:</span> <%= blog.blogName %></div>
+                  <div><span class="titleText">Description:</span> <%= blog.blogDesc %></div>
+                  <div class="titleText">Posts:</div>
+               </div>
                <div id="postList" repeat=":= blog.posts" repeatVarName="curPost">
                   <a clickCount="=: switchToPost(curPost.shortName)"
-                     class=':= post == curPost ? "currentPostLink" : "postLink"'><%= curPost.title %></a>
-               </div>
-               <div id="blogDesc">
-                  <%= blog.blogDesc %>
+                     class=':= post == curPost ? "currentLink" : "normalLink"'><%= curPost.title %></a>
                </div>
                <div id="postContent" visible=":= post != null">
                   <h3><%= post.title %></h3>
@@ -46,5 +47,25 @@
             </div>
          </div>
       </div>
+      <style type="text/css">
+         .currentLink {
+            text-decoration: underline;
+         }
+         .normalLink {
+            text-decoration: none;
+         }
+         .normalLink:hover {
+            text-decoration: underline;
+         }
+         .titleText {
+            font-weight: bold;
+         }
+         .postContent {
+            max-width: 350px;
+         }
+         .blogIndent {
+            padding-left: 20px;
+         }
+      </style>
    </body>
 </html>

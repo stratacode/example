@@ -10,29 +10,49 @@
    %>
    <body>
       <div class="appFrame" id="appFrame">
-         <span id="blogList" repeat=":= BlogManager.blogs" repeatVarName="curBlog">
-            <a href='= "/blog/" + curBlog.blogId + "/"' class=':= blog == curBlog ? "currentBlogLink" : "blogLink"'><%= curBlog.blogName %></a>
+         <div class="titleText">All blogs:</div>
+         <span id="blogList" repeat=":= BlogManager.blogs" repeatVarName="curBlog" class="blogIndent">
+            <a href='= "/blog/" + curBlog.blogId + "/"' class=':= blog == curBlog ? "currentLink" : "normalLink"'><%= curBlog.blogName %></a>
          </span>
-         <div id="blogDisplayWrapper">
-            <div id="blogDisplay" visible=":= blog != null">
-               <div id="postList" repeat=":= blog.posts" repeatVarName="curPost">
-                  <a href='= "/blog/" + blog.blogId + "/" + curPost.shortName + "/"' class=':= post == curPost ? "currentPostLink" : "postLink"'><%= curPost.title %></a>
-               </div>
-               <div id="blogDesc">
-                  <%= blog.blogDesc %>
-               </div>
-               <div id="postContent" visible=":= post != null">
-                  <h3><%= post.title %></h3>
-                  <%= post.postText %>
-                  <div id="alt">
-                     Please select a post.
-                  </div>
-               </div>
+         <div id="blogDisplay" visible=":= blog != null">
+            <div id="blogDesc">
+               <%= blog.blogDesc %>
+            </div>
+
+            <div id="postList" repeat=":= blog.posts" repeatVarName="curPost">
+               <a href='= "/blog/" + blog.blogId + "/" + curPost.shortName + "/"' class=':= post == curPost ? "currentPostLink" : "postLink"'><%= curPost.title %></a>
+            </div>
+            <div id="postContent" visible=":= post != null">
+               <h3><%= post.title %></h3>
+               <%= post.postText %>
                <div id="alt">
-                  Please select a blog.
+                  Please select a post.
                </div>
+            </div>
+            <div id="alt">
+               Please select a blog.
             </div>
          </div>
       </div>
+      <style type="text/css">
+         .currentLink {
+            text-decoration: underline;
+         }
+         .normalLink {
+            text-decoration: none;
+         }
+         .normalLink:hover {
+            text-decoration: underline;
+         }
+         .titleText {
+            font-wieght: bold;
+         }
+         .postContent {
+            max-width: 350px;
+         }
+         .blogIndent {
+            padding-left: 20px;
+         }
+      </style>
    </body>
 </html>
