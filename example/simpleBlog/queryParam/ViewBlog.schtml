@@ -50,7 +50,7 @@
             font-weight: bold;
          }
          .postContent {
-            max-width: 350px;
+            width: 350px;
          }
          .blogIndent {
             padding-left: 20px;
