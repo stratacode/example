@@ -1,0 +1,5 @@
+<!-- 
+ Run this as a stateless application
+  -->
+<html scope="request">
+</html>
