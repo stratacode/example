@@ -1,7 +1,7 @@
 <!-- TodoList.schtml modifies the TodoList class in the previous model layer.
      Setting 'refreshBindings' here for the 'getRemaining' method which
      can't automatically detect changes to the 'completed' property. -->
-<html refreshBindings="true">
+<html refreshBindings="true" extends="EditablePage">
    <head>
       <link rel="stylesheet" type="text/css" href="todoStyle.css" />
    </head>

@@ -1,5 +1,5 @@
 <%@ @URL(pattern="/uc") %>
-<html>
+<html extends="EditablePage">
 <head>
 	<title>UnitConverter on StrataCode</title>
 	<link rel="stylesheet" type="text/css" href="style.css"/>

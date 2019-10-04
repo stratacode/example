@@ -1,6 +1,6 @@
 <%@ @URL(pattern="/blog/[{blogId=integerLiteral}/][{postShortName=identifier}/]",
      testURLs={"/blog/1/toBeAnnounced/", "/blog/1/noNewsGoodNews/"}) %>
-<html>
+<html extends="EditablePage">
    <%!
       int blogId;
       String postShortName;
