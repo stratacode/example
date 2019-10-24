@@ -1,7 +1,5 @@
-<!-- TodoList.schtml modifies the TodoList class in the previous model layer.
-     Setting 'refreshBindings' here for the 'getRemaining' method which
-     can't automatically detect changes to the 'completed' property. -->
-<html refreshBindings="true" extends="EditablePage">
+<!-- This file, TodoList.schtml modifies TodoList.sc in the previous model layer -->
+<html extends="EditablePage">
    <head>
       <link rel="stylesheet" type="text/css" href="todoStyle.css" />
    </head>
@@ -9,23 +7,22 @@
      <div class="appFrame" id="appFrame">
         <h2>Todo List</h2>
         <div id="todoControl">
-           <span><%= getRemaining(todos) %> of <%= getSize(todos) %> to do</span>
-           <!-- The clickEvent property is updated when the anchor tag is clicked on.  When that happens the
-                 binding calls: 'removeComplete()' -->
+           <span><%= remaining %> of <%= numTodos %> to do</span>
+
+           <!-- When the tag is clicked, clickEvent fires and calls removeComplete() -->
            [ <a href="#" clickEvent="=: removeComplete()">remove completed</a> ]
            <ul>
-              <!-- Repeat the li tag once for each element in the todos list.
-                As the list changes, tags are added/removed as needed -->
+              <!-- Repeat li once for each element in todos, setting the var todo -->
               <li repeat=":= todos" repeatVarName="todo">
                  <!-- Set checked to the value of todo.complete and vice-versa -->
                  <input type="checkbox" checked=":=: todo.complete"/>
-                 <!-- Add a class to this span tag when it is done -->
-                 <span class='<%= "complete-" + todo.complete %>'><%= todo.text %></span>
+                 <!-- set the class to be complete-true or complete-false -->
+                 <span class=':= "complete-" + todo.complete'><%= todo.text %></span>
               </li>
            </ul>
            <form submitEvent="=: addTodoEntry()">
               <input type="text" value=":=: todoText" size="45" placeholder="enter todo entry here"/>
-              <input type="submit" value="Add" disabled=':= TextUtil.length(todoText) == 0'/>
+              <input type="submit" value="Add" disabled=':= todoText.length() == 0'/>
            </form>
         </div>
      </div>
