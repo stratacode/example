@@ -6,5 +6,5 @@ package sc.example.unitConverter;
 // and the browser (js.schtml) with synchronization between the
 // two enabled (js.sync).
 example.unitConverter.html.clientServer extends example.unitConverter.html.core, jetty.schtml, js.schtml, js.sync {
-   codeType = sc.layer.CodeType.UI;
+   codeType = sc.layer.CodeType.Application;
 }

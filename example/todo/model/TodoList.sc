@@ -5,6 +5,8 @@ class TodoList {
       String text;
       boolean complete;
 
+      complete =: updateRemaining();
+
       // Use ManualGetSet so we do not send unnecessary change events from the constructor
       @sc.obj.ManualGetSet
       TodoItem(String t, boolean c) {
@@ -20,22 +22,26 @@ class TodoList {
 
    String todoText = "";
 
+   int remaining;
+   int numTodos;
+
+   todos =: updateRemaining();
+
    void addTodoEntry() {
       todos.add(new TodoItem(todoText, false));
       todoText = "";
    }
 
-   int getRemaining(List<TodoItem> todoList) {
+   void updateRemaining() {
       int count = 0;
-      if (todoList == null) {
-         System.out.println("*** no list");
-         return 0;
+      if (todos != null) {
+         for (TodoItem todo: todos) {
+            if (!todo.complete)
+               count++;
+         }
       }
-      for (TodoItem todo: todoList) {
-         if (!todo.complete)
-            count++;
-      }
-      return count;
+      remaining = count;
+      numTodos = todos.size();
    }
 
    int getSize(List<TodoItem> list) {

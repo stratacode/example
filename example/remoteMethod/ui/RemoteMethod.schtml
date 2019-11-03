@@ -1,10 +1,12 @@
 <html>
    <body><div id="app" class="appFrame">
       Simple call to the server, result is ignored:
-      <input id="helloButton" type="button" value="Echo hello on server" clickEvent="=: echoHello()"/>
+      <input id="helloButton" type="button" value="Echo hello on server"
+             clickEvent="=: echoHello()"/>
       <p>
-      Call to server when button is pressed.  
-      <form id="sayHelloForm" submitEvent="=: remoteResult = sayHello(nameField.value)">
+      Automatic async call to server method sayHello(msg) when button is pressed:
+      <form id="sayHelloForm"
+            submitEvent="=: remoteResult = sayHello(nameField.value)">
          <%! String remoteResult; %>
          <input id="nameField" type="text"/>
          <input type="submit" value="Say hello"/><br/>
@@ -12,13 +14,6 @@
       </form>
       <p/>
       Call to server when key is pressed.  Result:
-      <!--
-        Should we fix this?   #1 restore focus after refresh #2 investigate why body is being split... is it the sub-tags?
-      <input type="text" id="immediateName"><br>
-      Result: <%= sayHello(immediateName.value) %>
-      <p>
-      Like above but with results in a tag object to limit updates:
-      -->
       <input type="text" id="childName"/><br/>
       <div id="immediate">
          Result: <%= sayHello(childName.value) %>

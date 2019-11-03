@@ -1,0 +1,5 @@
+<%!
+ BlogPost {
+    title = "new title";
+ }
+%>

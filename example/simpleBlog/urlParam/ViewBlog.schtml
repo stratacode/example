@@ -1,5 +1,5 @@
 <%@ @URL(pattern="/blog/[{blogId=integerLiteral}/][{postShortName=identifier}/]",
-     testURLs={"/blog/1/toBeAnnounced/", "/blog/1/noNewsGoodNews/"}) %>
+     testURLs={"/blog/1/perfGoals/", "/blog/1/usableAndEfficient/"}) %>
 <html>
    <%!
       int blogId;

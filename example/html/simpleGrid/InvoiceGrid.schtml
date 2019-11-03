@@ -1,7 +1,7 @@
 <%@
    import sc.bind.BindingDirection;
 %>
-<html>
+<html extends="EditablePage">
    <%!
       ArrayList<InvoiceItem> gridItems = {
          new InvoiceItem("foo", "id-0", 42, new BigDecimal("1.23"), new BigDecimal("0.05")),
@@ -25,29 +25,11 @@
       // DynUtil findType and getPropertyNames will work for both dynamic and compiled modes, on the server and in the browser
       String[] colNames = DynUtil.getPropertyNames(DynUtil.findType("sc.example.simpleGrid.InvoiceItem"));
    %>
-   <style>
-      #hdrRow span {
-         border-top: 1px solid #000;
-      }
-      .startRow {
-         border-left: 1px solid #000;
-      }
-      #hdrRow, .row {
-         display: flex;
-         flex-wrap: nowrap;
-      }
-      #hdrRow span {
-         background: #aaa;
-      }
-      #hdrRow span, .row span {
-         width: 100px;
-         border-right: 1px solid #000;
-         border-bottom: 1px solid #000;
-         padding-left: 5px;
-      }
-   </style>
+   <head>
+      <link rel="stylesheet" type="text/css" href="gridStyle.css" />
+   </head>
    <body>
-      <div id="appFrame">
+      <div id="appFrame" class="appFrame">
          <input type="button" value="Add row" clickEvent="=: addRow()"/>
          <input type="button" value="Incr discount" clickEvent="=: incrDiscount()"/>
          <p/>

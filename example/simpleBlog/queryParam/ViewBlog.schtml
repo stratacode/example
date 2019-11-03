@@ -1,4 +1,4 @@
-<%@ @URL(pattern="/blog/", testURLs={"/blog/?blogId=1&post=toBeAnnounced", "/blog/?blogId=1&post=noNewsGoodNews"}) %>
+<%@ @URL(pattern="/blog/", testURLs={"/blog/?blogId=1&post=perfGoals", "/blog/?blogId=1&post=usableAndEfficient"}) %>
 <html>
    <%!
       @QueryParam

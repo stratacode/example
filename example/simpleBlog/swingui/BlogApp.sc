@@ -1,7 +1,7 @@
 import sc.util.StringUtil;
 
 @MainInit
-object ViewBlog extends AppFrame {
+object BlogApp extends AppFrame {
    int windowWidth, windowHeight;
    location = new Point(300, 300);
    size = new Dimension(windowWidth, windowHeight);
@@ -45,8 +45,8 @@ object ViewBlog extends AppFrame {
          text :=: blog.blogName;
          location := SwingUtil.point(mainLabel.location.x + mainLabel.size.width + xpad, startY + baseline);
          size := preferredSize;
-         enabled := blog != ViewBlog.this.blog;
-         clickCount =: ViewBlog.this.blog = blog;
+         enabled := blog != BlogApp.this.blog;
+         clickCount =: BlogApp.this.blog = blog;
       }
    }
 
@@ -55,7 +55,7 @@ object ViewBlog extends AppFrame {
 
       double height = ypad;
 
-      parentComponent = ViewBlog.this;
+      parentComponent = BlogApp.this;
 
       // This will be called once for each blog when the RepeatComponent refreshes
       public BlogHeader createRepeatElement(Object blog, int ix, Object oldComp) {
@@ -118,8 +118,8 @@ object ViewBlog extends AppFrame {
             text :=: post.title;
             location := SwingUtil.point(mainLabel.location.x + mainLabel.size.width + xpad, startY + baseline);
             size := preferredSize;
-            enabled := post != ViewBlog.this.post;
-            clickCount =: ViewBlog.this.post = post;
+            enabled := post != BlogApp.this.post;
+            clickCount =: BlogApp.this.post = post;
          }
       }
 

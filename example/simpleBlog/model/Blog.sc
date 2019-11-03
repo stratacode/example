@@ -7,7 +7,7 @@ class Blog {
    int blogId;
    String blogName;
    String blogDesc;
-
+   
    ArrayList<Post> posts;
 
    Post getPost(String postShortName) {
@@ -26,15 +26,4 @@ class Blog {
          posts = new ArrayList<Post>();
       BlogManager.addBlog(this);
    }
-
-   /*
-   @sc.obj.EditorCreate(constructorParamNames="blogId")
-   static Blog createBlog(int blogId) {
-      Blog newBlog = new Blog();
-      newBlog.blogId = blogId;
-      newBlog.posts = new ArrayList<Post>();
-      BlogManager.addBlog(newBlog);
-      return newBlog;
-   }
-   */
 }

@@ -1,5 +1,5 @@
 <%@ @URL(pattern="/blog/[{blogId=integerLiteral}/][{postShortName=identifier}/]",
-     testURLs={"/blog/1/toBeAnnounced/", "/blog/1/noNewsGoodNews/"}) %>
+     testURLs={"/blog/1/perfGoals/", "/blog/1/usableAndEfficient/"}) %>
 <html extends="EditablePage">
    <%!
       int blogId;
@@ -21,7 +21,7 @@
       <div class="appFrame" id="appFrame">
          <div class="titleText">All blogs:</div>
          <div id="blogList" repeat=":= BlogManager.blogs" repeatVarName="curBlog" class="blogIndent">
-            <a clickCount="=: switchToBlog(curBlog.blogId)" class=':= blog == curBlog ? "currentLink" : "normalLink"'><%= curBlog.blogName %></a>
+            <a clickEvent="=: switchToBlog(curBlog.blogId)" class=':= blog == curBlog ? "currentLink" : "normalLink"'><%= curBlog.blogName %></a>
          </div>
          <div id="blogDisplayWrapper">
             <div id="blogDisplay" visible=":= blog != null">
@@ -31,7 +31,7 @@
                   <div class="titleText">Posts:</div>
                </div>
                <div id="postList" repeat=":= blog.posts" repeatVarName="curPost">
-                  <a clickCount="=: switchToPost(curPost.shortName)"
+                  <a clickEvent="=: switchToPost(curPost.shortName)"
                      class=':= post == curPost ? "currentLink" : "normalLink"'><%= curPost.title %></a>
                </div>
                <div id="postContent" visible=":= post != null">

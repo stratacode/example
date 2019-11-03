@@ -1,6 +1,9 @@
-<%@ @URL(pattern="/blog/", testURLs={"/blog/?blogId=1&post=toBeAnnounced", "/blog/?blogId=1&post=noNewsGoodNews"}) %>
+<%@ @URL(pattern="/blog/", 
+         testURLs={"/blog/?blogId=1&post=perfGoals",
+                   "/blog/?blogId=1&post=usableAndEfficient"}) %>
 <html extends="EditablePage">
    <%!
+      // View model, usually in a separate layer
       @QueryParam
       int blogId;
       @QueryParam(name="post")
@@ -8,6 +11,8 @@
 
       Blog blog := BlogManager.findBlog(blogId);
       Post post := blog == null ? null : blog.getPost(postShortName);
+  
+      boolean newPost := post.daysSincePost < 4;
 
       void switchToBlog(int newBlogId) {
          this.blogId = newBlogId;
@@ -18,60 +23,44 @@
          postShortName = shortName;
       }
    %>
+   <head>
+      <link rel="stylesheet" type="text/css" href="blogStyle.css" />
+   </head>
    <body>
       <div class="appFrame" id="appFrame">
-         <div class="titleText">All blogs:</div>
-         <div id="blogList" repeat=":= BlogManager.blogs" repeatVarName="curBlog" class="blogIndent">
-            <a   clickCount="=: switchToBlog(curBlog.blogId)"
-                 class=':= blog == curBlog ? "currentLink" : "normalLink"'>
+         <div class="label">All blogs:</div>
+         <div id="blogList" repeat=":= BlogManager.blogs"
+              repeatVarName="curBlog" class="blogIndent">
+            <a clickEvent="=: switchToBlog(curBlog.blogId)"
+               class=':= blog == curBlog ? "currentLink" : "normalLink"'>
                <%= curBlog.blogName %>
             </a>
          </div>
          <p/>
          <div id="blogDisplay" visible=":= blog != null">
-            <div id="blogDesc">
-               <div><span class="titleText">Current blog:</span> <%= blog.blogName %></div>
-               <div><span class="titleText">Description:</span> <%= blog.blogDesc %></div>
-               <div class="titleText">Posts:</div>
-            </div>
-            <div id="postList" repeat=":= blog.posts" repeatVarName="curPost" class="blogIndent">
-               <a   clickCount="=: switchToPost(curPost.shortName)"
-                    class=':= post == curPost ? "currentLink" : "normalLink"'>
-                  <%= curPost.title %>
-               </a>
-            </div>
             <div id="alt">
                Please select a blog.
             </div>
+            <div><span class="label">Current blog:</span><%= blog.blogName %></div>
+            <div><span class="label">Description:</span><%= blog.blogDesc %></div>
+            <div class="label">Posts:</div>
+            <div repeat=":= blog.posts" repeatVarName="curPost" class="blogIndent">
+               <a clickEvent="=: switchToPost(curPost.shortName)"
+                  class=':= post == curPost ? "currentLink" : "normalLink"'>
+                  <%= curPost.title %>
+               </a>
+            </div>
             <div id="postContent" visible=":= post != null" class="postContent">
-               <h3><%= post.title %></h3>
+               <h4>
+                  <%= post.title %>
+                  <img visible=":= newPost" src="/newIcon.png" class="newIcon"/>
+               </h4>
                <%= post.postText %>
-
                <div id="alt">
                   Please select a post.
                </div>
             </div>
          </div>
       </div>
-      <style type="text/css">
-         .currentLink {
-            text-decoration: underline;
-         }
-         .normalLink {
-            text-decoration: none;
-         }
-         .normalLink:hover {
-            text-decoration: underline;
-         }
-         .titleText {
-            font-weight: bold;
-         }
-         .postContent {
-            width: 350px;
-         }
-         .blogIndent {
-            padding-left: 20px;
-         }
-      </style>
    </body>
 </html>

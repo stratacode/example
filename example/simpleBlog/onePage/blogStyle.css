@@ -1,0 +1,24 @@
+.currentLink {
+   text-decoration: underline;
+}
+.normalLink {
+   text-decoration: none;
+}
+.normalLink:hover {
+   text-decoration: underline;
+}
+.label {
+   font-weight: bold;
+   font-size: smaller;
+   padding-right: 5px;
+}
+.appFrame {
+   width: 250px;
+}
+.blogIndent {
+   padding-left: 20px;
+}
+
+.newIcon {
+   vertical-align: -3px;
+}

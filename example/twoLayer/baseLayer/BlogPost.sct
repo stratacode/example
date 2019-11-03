@@ -1,0 +1,9 @@
+<%!
+ class BlogPost {
+    String title = "post title";
+    String postText = %>
+Switch back and forth between Java and text with template operators.
+Here replacing a string with template text
+Include variables like JSP <%= title %>
+<%;
+ } %>

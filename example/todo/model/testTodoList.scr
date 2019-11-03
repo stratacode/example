@@ -1,16 +1,15 @@
 cmd.pauseTime = 250;
 
-//cmd.sleep(3000);
-//cmd.edit = false;
-
 // Run these commands in the java process - they will be sync'd to the client
 cmd.targetRuntime = "java";
+// Optionally - send the commands to the client - after converting to JS,
+// they are eval'd using the sync framework.
+//cmd.targetRuntime = "js";
 
 TodoList {
    todos.size(); 
    assert todos.size() == 3 : "No todos";
    todos.get(1).complete = true;
-   //cmd.targetRuntime = "js";
 
    todoText = "A new entry";
    addTodoEntry();
@@ -20,9 +19,6 @@ TodoList {
       todos.get(0).complete = true;
       removeComplete();
    }
-
-   //todos.get(0).complete = true;
-   //removeComplete();
 
    todoText = "done";
    addTodoEntry();

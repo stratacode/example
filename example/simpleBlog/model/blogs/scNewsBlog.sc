@@ -2,8 +2,9 @@ import sc.example.simpleBlog.blogs.news.*;
 
 object scNewsBlog extends Blog {
    blogId = 1;
-   blogName = "StrataCode Announcements";
-   blogDesc = "Announcements from StrataCode";
+   // name of news blog
+   blogName = "News";
+   blogDesc = "StrataCode news";
 
-   posts = { toBeAnnounced, noNewsGoodNews };
+   posts = { perfGoals, usableAndEfficient };
 }
