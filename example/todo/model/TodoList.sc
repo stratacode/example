@@ -22,8 +22,9 @@ class TodoList {
 
    String todoText = "";
 
-   int remaining;
-   int numTodos;
+   // No need to synchronize these two because we sync todos from which they are computed
+   @sc.obj.Sync(syncMode=sc.obj.SyncMode.Disabled)
+   int remaining, numTodos;
 
    todos =: updateRemaining();
 

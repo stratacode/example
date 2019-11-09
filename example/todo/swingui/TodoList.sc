@@ -7,7 +7,7 @@ TodoList extends AppFrame {
    object mainLabel extends JLabel {
       // The getRemaining method depends on the 'complete' state of the TodoItem so this binding is refreshed
       // when completeCheckBox.selected changes by calling Bind.refreshBindings
-      text := "Todo - " + getRemaining(todos) + " of: " + getSize(todos) + " remaining";
+      text := "Todo - " + remaining + " of: " + numTodos + " remaining";
       location := SwingUtil.point(xpad, ypad + baseline);
       size := preferredSize;
    }
