@@ -3,6 +3,7 @@
    <form id="helloForm" onSubmit="return false;">
       <!-- value connects to message with a bi-directional binding  -->
       <input id="messageInput" type="text" value=":=: message" size="45"/>
+      <!-- reply is set in a binding in the server layer -->
       <div><%= reply %></div>
    </form>
 </body>

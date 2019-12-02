@@ -1,5 +1,4 @@
-<!-- A simple HTML page template which binds the input tag to the message property and displays 
-     the reply property as the body of a div tag. -->
+<!-- Same UI but shows different way to init sync'd properties in the model layer -->
 <html>
 <body>
    <form id="helloForm" onSubmit="return false;">

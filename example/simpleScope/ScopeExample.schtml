@@ -2,8 +2,6 @@
    <i abstract="true" id="editField" style="text-indent: 40px; display: block"/>
    <input abstract="true" id="inputTag" type="text" style="width: 200px"/>
 
-   <!-- Although the span wrapper tag around pageTitle is not necessary for HTML formatting, it allows the title to refresh
-        independently of the following input tag.  Also, it hides a bug where the focus on an input tag is not restored after it's re-rendered -->
    Page title: <span><%= GlobalPageInfo.pageTitle %></span>
       <i extends="editField">Edit page title: <input extends="inputTag" value=":=: GlobalPageInfo.pageTitle"/></i>
    <p/>
