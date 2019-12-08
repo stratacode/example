@@ -1,5 +1,6 @@
 <html pageVisitCount="=: body.appFrame.onPageVisit()">
 <body>
+   Application Foo
    <div id="appFrame" extends="ScopeExample"/>
 </body>
 </html>
