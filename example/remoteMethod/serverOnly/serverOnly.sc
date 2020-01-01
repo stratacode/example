@@ -1,1 +1,1 @@
-example.remoteMethod.serverOnly extends main {}
+example.remoteMethod.serverOnly extends clientServer {}
