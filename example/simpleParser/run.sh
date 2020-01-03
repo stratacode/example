@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 SCC_CMD=`which scc`
 if [ "$SCC_CMD" = "" ] ; then
