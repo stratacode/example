@@ -15,7 +15,7 @@ class TodoList {
       }
    }
    ArrayList<TodoItem> todos; /* = {
-      new TodoItem("Run layerCake todo sample", true),
+      new TodoItem("Run todo sample", true),
       new TodoItem("Check me and see it stay in sync", false),
       new TodoItem("Add a new entry and press 'remove completed'", false),
    } */
