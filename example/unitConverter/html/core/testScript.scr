@@ -9,6 +9,7 @@ UnitConverter {
    if (cmd.syncEnabled)
       pageLoader.savePage("UnitConverter", output_c().toString());
    pageLoader.savePage("UnitConverter", output().toString());
+   cmd.sleep(500); // Wait before the close since the editor is open 
 }
 
 pageLoader.saveClientConsole(pageLoader.findUrlPath("UnitConverter"), "ucPage");

@@ -16,7 +16,7 @@ RemoteMethod {
 
          sayHelloForm {
             nameField.value = "StrataCode!";
-            submit();
+            sendSubmitEvent(); // Simulate a form submit by sending the submitEvent - unlike submit() this stays on the same page
          }
 
          childName.value = "S";
