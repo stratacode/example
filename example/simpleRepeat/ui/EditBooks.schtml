@@ -77,10 +77,12 @@
    %>
    <body>
       <div id="appFrame">
-         <dl id="showAuthors" repeat=":= authors" repeatVarName="author">
+         <!-- using repeatSync=true for control of the repeatTags from test scripts -->
+         <dl id="showAuthors" repeat=":= authors" repeatVarName="author" repeatSync="true">
             <dt id="authorName" clickEvent="=: changeCurrentAuthor(author)" class=':= currentAuthor == author ? "selected" : ""'><%= author.name %>:</dt>
             <dd id="books">
-               <span id="booksList" repeat=":= author.books" repeatVarName="book" clickEvent="=: changeCurrentBook(book)" class=':= currentBook == book ? "selected" : ""'>
+               <span id="booksList" repeat=":= author.books" repeatVarName="book" clickEvent="=: changeCurrentBook(book)" 
+                     class=':= currentBook == book ? "selected" : ""' repeatSync="true">
                   <%= book.title + (repeatIndex == author.books.size()-1 ? "" : ",") %>
                </span>
             </dd>

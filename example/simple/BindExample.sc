@@ -17,12 +17,12 @@ public class BindExample {
    Category category;
    User user;
 
-   // Update when eliteStatus or recentPurchases changes
+   // Update when user, eliteStatus or recentPurchases changes
    boolean showElite := user.eliteStatus ||
                         user.recentPurchases > 200;
 
    // Update when category or showElite changes.
-   // findFeatured can be local or remote
+   // findFeatured() can be a local or remote method
    List<Product> promoted := category.findFeatured(showElite);
 
 }
