@@ -1,5 +1,5 @@
 cmd.edit = true; // this test runs in edit mode as well because it hits problems with needsOwnClass and stale type names
-cmd.addDialogAnswer("Pick a Quiz", "Art History");
+cmd.addDialogAnswer("Pick a Quiz", "Art History"); 
 
 cmd.pauseTime=100;
 cmd.path="takequiz";
@@ -17,7 +17,8 @@ TakeQuizMain {
          clickCount++;
       }
       nextButton.clickCount++;
-      answerChoiceButtons.selectedIndex = 2;
+      // In compiled mode, will see Unable to resolve this error here because the enclosing type is TakeQuiz not the modified/inherited 'takeQuiz'
+      answerChoiceButtons.selectedIndex = 2; 
       nextButton.clickCount++;
       answerChoiceButtons.selectedIndex = 1;
       answerButton.clickCount++;
