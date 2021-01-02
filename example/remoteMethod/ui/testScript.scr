@@ -1,7 +1,7 @@
 cmd.includeSuper();
 
 // Load the page with the name RemoteMethod (from RemoteMethod.schtml which uses the default page name) and assign it the scopeContextName remoteMethodPage
-pageLoader.loadPageAndWait("RemoteMethod", "remoteMethodPage");
+pageLoader.loadPageAndWait("RemoteMethod", "remoteMethodPage", null);
 
 // Not required for the client version, but for the serverTag version
 // we need some pause time or else everything tends to run on the server

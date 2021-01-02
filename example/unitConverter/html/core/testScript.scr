@@ -1,6 +1,6 @@
 cmd.includeSuper();
 
-pageLoader.loadPageAndWait("UnitConverter", "ucPage");
+pageLoader.loadPageAndWait("UnitConverter", "ucPage", null);
 
 cmd.include("testUC.scr");
 
@@ -12,4 +12,8 @@ UnitConverter {
    cmd.sleep(500); // Wait before the close since the editor is open 
 }
 
-pageLoader.saveClientConsole(pageLoader.findUrlPath("UnitConverter"), "ucPage");
+pageLoader.saveClientConsole(pageLoader.findURLPath("UnitConverter"), "ucPage");
+
+// This script is included by test/editorTest/htmlUCSimpleNav/testScript.scr that wants to keep the session open
+//cmd.sleep(500);
+//pageLoader.endSession("ucPage");

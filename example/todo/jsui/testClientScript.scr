@@ -1,6 +1,6 @@
 cmd.include("testInit.scr");
 
-pageLoader.loadPageAndWait("TodoList", "testClientScript");
+pageLoader.loadPageAndWait("TodoList", "testClientScript", null);
 
 cmd.pauseTime = 250;
 

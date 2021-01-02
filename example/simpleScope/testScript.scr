@@ -1,6 +1,6 @@
 cmd.includeSuper();
 
-pageLoader.loadPageAndWait("ScopeTest", "scopeTestPage"); 
+pageLoader.loadPageAndWait("ScopeTest", "scopeTestPage", null);
 
 cmd.pauseTime = 250;
 
