@@ -62,6 +62,8 @@ public class NameQuiz extends WindowAdapter implements PropertyChangeListener {
     * dialog, sets quizName to null.
     */
    public void propertyChange(PropertyChangeEvent event) {
+      if (event.propertyName.equals("graphicsConfiguration"))
+         return;
       if (quizNameDialog.isVisible() && 
           (event.getSource() == optionPane) && 
           (event.getPropertyName().equals(JOptionPane.VALUE_PROPERTY))) {
